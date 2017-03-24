@@ -1,8 +1,7 @@
 # WEB CSR
 ## System CSR Web Based Laravel
 
-![alt tag](https://img.shields.io/badge/Developedby-DanangIstu-blue.svg) ![alt tag](https://img.shields.io/badge/Developedby-DanangIstu-blue.svg) 
-
+![alt tag](https://img.shields.io/badge/Developedby-DanangIstu-red.svg)
 ### Requirement
 - Composer
 - PHP 5.6 or above
@@ -17,7 +16,7 @@ A. Clone the project
     using ssh :
     git clone git@github.com:danangistu/webcsr.git
 
-    using https
+    using https :
     git clone https://github.com/danangistu/webcsr.git
 
 ```
