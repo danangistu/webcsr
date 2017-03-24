@@ -1,7 +1,7 @@
 # WEB CSR
 ## System CSR Web Based Laravel
 
-![alt tag](https://img.shields.io/badge/Developer-Danang Istu N-green.svg)
+![alt tag](https://img.shields.io/badge/Developedby-DanangIstu-blue.svg) ![alt tag](https://img.shields.io/badge/Developedby-DanangIstu-blue.svg) 
 
 ### Requirement
 - Composer
@@ -15,7 +15,7 @@ A. Clone the project
 
 ```sh
     using ssh :
-	git clone git@github.com:danangistu/webcsr.git
+    git clone git@github.com:danangistu/webcsr.git
 
     using https
     git clone https://github.com/danangistu/webcsr.git
@@ -25,18 +25,18 @@ A. Clone the project
 B. Setting Database Connection in .env file
 
 ```sh
-	DB_HOST=127.0.0.1
-	DB_PORT=3306
-	DB_DATABASE=dbName
-	DB_USERNAME=dbUsername
-	DB_PASSWORD=dbPassword
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=dbName
+    DB_USERNAME=dbUsername
+    DB_PASSWORD=dbPassword
 
 ```
 
 C. composer install
 ```sh
 
-composer install
+    composer install
 
 ```
 
@@ -44,7 +44,7 @@ D. Publish vendor
 
 ```sh
 
-php artisan vendor:publish
+    php artisan vendor:publish
 
 ```
 
