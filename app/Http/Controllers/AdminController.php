@@ -21,4 +21,7 @@ class AdminController extends Controller
           return '';
         }
     }
+    public function format_date($originalDate){
+        return $newDate = date("Y-m-d", strtotime($originalDate));
+    }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Pelayanan Kesehatan @endsection
+@section('title')Pelayanan Pendidikan @endsection
 @push('style')
 <!--Bootstrap Table [ OPTIONAL ]-->
 <link href="{{ url('admin') }}/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Bantuan Pelayanan Kesehatan</h1>
+        <h1 class="page-header text-overflow">Bantuan Pelayanan pendidikan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -30,7 +30,8 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li class="active">Pelayanan Kesehatan</li>
+        <li><a href="{{ url('pendidikan') }}">Pelayanan Pendidikan </a></li>
+        <li class="active">Penerima Bantuan Pendidikan</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -40,34 +41,37 @@
     <div id="page-content">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Tabel Pelayanan Kesehatan</h3>
+                <h3 class="panel-title">Tabel Penerima Bantuan Pendidikan </h3>
             </div>
             <div class="panel-body">
-                <a href="{{ url('kesehatan/create') }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
+                <a href="{{ url('pendidikan/penerima/create/'.$pendidikan_id) }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
             </div>
             <div class="panel-body">
                 @include('common.alert')
                 <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th width="10%">Tempat</th>
-                            <th class="min-tablet">Kerjasama</th>
-                            <th width="10%">Jenis Pengobatan</th>
+                            <th>Nama</th>
+                            <th width="10%">Tanggal Lahir</th>
+                            <th>Alamat</th>
+                            <th>Pendidikan</th>
+                            <th>Biaya</th>
+                            <th width="10%">Foto</th>
                             <th width="15%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $obat = $obat->where('kesehatan_id','=',$model->id)->count(); ?>
                             <tr>
-                                <td>{{ $model->tempat }}</td>
-                                <td>{{ $model->kerjasama }}</td>
+                                <td>{{ $model->nama }}</td>
+                                <td>{{ $model->birthdate }}</td>
+                                <td>{{ $model->alamat }}</td>
+                                <td>{{ $model->pendidikan }}</td>
+                                <td>{{ $model->biaya }}</td>
+                                <td><img src="{{ url('contents/pendidikan/foto/'.$model->foto) }}" height="100"></td>
                                 <td>
-                                    <a href="{{ url('kesehatan/pengobatan/'.$model->id) }}" class="btn {{ $obat > 0 ? 'btn-success':'btn-primary'}} btn-primary">{{ $obat }} Data Pengobatan</a>
-                                </td>
-                                <td>
-                                    <a href="{{ url('kesehatan/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
-                                    <a href="{{ url('kesehatan/'.$model->id.'/edit') }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
+                                    <a href="{{ url('pendidikan/penerima/view/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
+                                    <a href="{{ url('pendidikan/penerima/edit/'.$model->id) }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>
                                 </td>
                             </tr>
@@ -91,7 +95,7 @@ $('.btn.btn-danger.btn-icon.icon-lg.fa.fa-trash').on('click', function(){
     var locale = "{{ url('/') }}";
     bootbox.confirm("Apakah anda yakin akan menghapus data?", function(result) {
         if (result) {
-            window.location.replace(locale + '/kesehatan/delete/'+id);
+            window.location.replace(locale + '/pendidikan/penerima/delete/'+id);
         }else{
             $.niftyNoty({
                 type: 'info',

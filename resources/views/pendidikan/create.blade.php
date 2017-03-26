@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Create Pelayanan Kesehatan @endsection
+@section('title')Create Pelayanan Pendidikan @endsection
 @push('style')
 <link href="{{ url('admin') }}/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
 @endpush
@@ -17,7 +17,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Tambah Data Pelayanan Kesehatan</h1>
+        <h1 class="page-header text-overflow">Tambah Data Pelayanan Pendidikan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -26,7 +26,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan</a></li>
+        <li><a href="{{ url('pendidikan') }}">Pelayanan Pendidikan</a></li>
         <li class="active">Tambah Data</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -104,7 +104,7 @@
                         </div>
 
                         <!--Form-->
-                        <form id="demo-bv-wz-form" action="{{ url('kesehatan') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form id="demo-bv-wz-form" action="{{ url('pendidikan') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="panel-body">
                                 <div class="tab-content">

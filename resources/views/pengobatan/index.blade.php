@@ -30,7 +30,8 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li class="active">Pelayanan Kesehatan</li>
+        <li><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan </a></li>
+        <li class="active">Jenis Pengobatan</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -40,34 +41,28 @@
     <div id="page-content">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Tabel Pelayanan Kesehatan</h3>
+                <h3 class="panel-title">Tabel Jenis Pengobatan</h3>
             </div>
             <div class="panel-body">
-                <a href="{{ url('kesehatan/create') }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
+                <a href="{{ url('kesehatan/pengobatan/create/'.$kesehatan_id) }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
             </div>
             <div class="panel-body">
                 @include('common.alert')
                 <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th width="10%">Tempat</th>
-                            <th class="min-tablet">Kerjasama</th>
-                            <th width="10%">Jenis Pengobatan</th>
-                            <th width="15%">Action</th>
+                            <th width="45%">Penyakit</th>
+                            <th width="45%">Obat</th>
+                            <th width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $obat = $obat->where('kesehatan_id','=',$model->id)->count(); ?>
                             <tr>
-                                <td>{{ $model->tempat }}</td>
-                                <td>{{ $model->kerjasama }}</td>
+                                <td>{{ $model->penyakit }}</td>
+                                <td>{{ $model->obat }}</td>
                                 <td>
-                                    <a href="{{ url('kesehatan/pengobatan/'.$model->id) }}" class="btn {{ $obat > 0 ? 'btn-success':'btn-primary'}} btn-primary">{{ $obat }} Data Pengobatan</a>
-                                </td>
-                                <td>
-                                    <a href="{{ url('kesehatan/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
-                                    <a href="{{ url('kesehatan/'.$model->id.'/edit') }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
+                                    <a href="{{ url('kesehatan/pengobatan/edit/'.$model->id) }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>
                                 </td>
                             </tr>
@@ -91,7 +86,7 @@ $('.btn.btn-danger.btn-icon.icon-lg.fa.fa-trash').on('click', function(){
     var locale = "{{ url('/') }}";
     bootbox.confirm("Apakah anda yakin akan menghapus data?", function(result) {
         if (result) {
-            window.location.replace(locale + '/kesehatan/delete/'+id);
+            window.location.replace(locale + '/kesehatan/pengobatan/delete/'+id);
         }else{
             $.niftyNoty({
                 type: 'info',

@@ -18,12 +18,22 @@
 Auth::routes();
 Route::get('/', 'DashboardController@index');
 Route::get('logout', 'Auth\LoginController@logout');
+//Pelayanan Kesehatan
 Route::resource('kesehatan', 'KesehatanController');
-Route::resource('kesehatan/delete/{id}', 'KesehatanController@destroy');
-
-// App::error(function(Exception $exception, $code){
-//     Log::error($exception);
-//     if (Config::get('app.debug') == false) {
-//         return Redirect::route('errors.404');
-//     }
-// });
+Route::get('kesehatan/delete/{id}', 'KesehatanController@destroy');
+Route::get('kesehatan/pengobatan/{id}', 'PengobatanController@index');
+Route::get('kesehatan/pengobatan/create/{id}', 'PengobatanController@create');
+Route::post('kesehatan/pengobatan', 'PengobatanController@store');
+Route::get('kesehatan/pengobatan/edit/{id}', 'PengobatanController@edit');
+Route::post('kesehatan/pengobatan/edit/{id}', 'PengobatanController@update');
+Route::get('kesehatan/pengobatan/delete/{id}', 'PengobatanController@destroy');
+//Pelayanan Pendidikan
+Route::resource('pendidikan', 'PendidikanController');
+Route::get('pendidikan/delete/{id}', 'PendidikanController@destroy');
+Route::get('pendidikan/penerima/{id}', 'PenerimaController@index');
+Route::get('pendidikan/penerima/create/{id}', 'PenerimaController@create');
+Route::post('pendidikan/penerima', 'PenerimaController@store');
+Route::get('pendidikan/penerima/edit/{id}', 'PenerimaController@edit');
+Route::post('pendidikan/penerima/edit/{id}', 'PenerimaController@update');
+Route::get('pendidikan/penerima/delete/{id}', 'PenerimaController@destroy');
+Route::get('pendidikan/penerima/view/{id}', 'PenerimaController@show');

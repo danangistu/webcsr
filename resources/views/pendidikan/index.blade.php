@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Pelayanan Kesehatan @endsection
+@section('title')Pelayanan Pendidikan @endsection
 @push('style')
 <!--Bootstrap Table [ OPTIONAL ]-->
 <link href="{{ url('admin') }}/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Bantuan Pelayanan Kesehatan</h1>
+        <h1 class="page-header text-overflow">Bantuan Pelayanan Pendidikan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -30,7 +30,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li class="active">Pelayanan Kesehatan</li>
+        <li class="active">Pelayanan Pendidikan</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -40,10 +40,10 @@
     <div id="page-content">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Tabel Pelayanan Kesehatan</h3>
+                <h3 class="panel-title">Tabel Pelayanan Pendidikan</h3>
             </div>
             <div class="panel-body">
-                <a href="{{ url('kesehatan/create') }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
+                <a href="{{ url('pendidikan/create') }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
             </div>
             <div class="panel-body">
                 @include('common.alert')
@@ -52,22 +52,22 @@
                         <tr>
                             <th width="10%">Tempat</th>
                             <th class="min-tablet">Kerjasama</th>
-                            <th width="10%">Jenis Pengobatan</th>
+                            <th width="10%">Penerima Bantuan</th>
                             <th width="15%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $obat = $obat->where('kesehatan_id','=',$model->id)->count(); ?>
+                        <?php $penerima = $penerima->where('pendidikan_id','=',$model->id)->count(); ?>
                             <tr>
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>
-                                    <a href="{{ url('kesehatan/pengobatan/'.$model->id) }}" class="btn {{ $obat > 0 ? 'btn-success':'btn-primary'}} btn-primary">{{ $obat }} Data Pengobatan</a>
+                                    <a href="{{ url('pendidikan/penerima/'.$model->id) }}" class="btn {{ $penerima > 0 ? 'btn-success':'btn-primary' }}"> {{ $penerima }} Data Penerima</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('kesehatan/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
-                                    <a href="{{ url('kesehatan/'.$model->id.'/edit') }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
+                                    <a href="{{ url('pendidikan/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
+                                    <a href="{{ url('pendidikan/'.$model->id.'/edit') }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>
                                 </td>
                             </tr>
@@ -91,7 +91,7 @@ $('.btn.btn-danger.btn-icon.icon-lg.fa.fa-trash').on('click', function(){
     var locale = "{{ url('/') }}";
     bootbox.confirm("Apakah anda yakin akan menghapus data?", function(result) {
         if (result) {
-            window.location.replace(locale + '/kesehatan/delete/'+id);
+            window.location.replace(locale + '/pendidikan/delete/'+id);
         }else{
             $.niftyNoty({
                 type: 'info',

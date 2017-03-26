@@ -48,7 +48,11 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('kesehatan') ? 'active-link' : null }}">
+                        <li class="{{
+                            request()->segment(1) == ('kesehatan') ||
+                            request()->segment(1) == ('pendidikan')
+                            ? 'active-link' : null
+                        }}">
                             <a href="">
                                 <i class="fa fa-life-buoy"></i>
                                 <span class="menu-title">
@@ -57,10 +61,14 @@
                             </a>
 
                             <!--Submenu-->
-                            <ul class="collapse {{ Request::is('kesehatan') ? 'in' : null }}">
+                            <ul class="collapse {{
+                                request()->segment(1) == ('kesehatan') ||
+                                request()->segment(1) == ('pendidikan')
+                                ? 'in' : null
+                            }}">
                                 <li><a href="#">Sarana & Prasarana</a></li>
-                                <li class="{{ Request::is('kesehatan') ? 'active-link' : null }}"><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan</a></li>
-                                <li><a href="#">Pelayanan Pendidikan</a></li>
+                                <li class="{{ request()->segment(1) == ('kesehatan') ? 'active-link' : null }}"><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan</a></li>
+                                <li class="{{ request()->segment(1) == ('pendidikan') ? 'active-link' : null }}"><a href="{{ url('pendidikan') }}">Pelayanan Pendidikan</a></li>
                                 <li><a href="#">Bencana Alam</a></li>
                             </ul>
                         </li>

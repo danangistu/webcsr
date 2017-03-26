@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Create Pelayanan Kesehatan @endsection
+@section('title')Edit Pelayanan Pendidikan @endsection
 @push('style')
 <link href="{{ url('admin') }}/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
 @endpush
@@ -17,7 +17,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Tambah Data Pelayanan Kesehatan</h1>
+        <h1 class="page-header text-overflow">Tambah Data Pelayanan Pendidikan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -26,8 +26,8 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan</a></li>
-        <li class="active">Tambah Data</li>
+        <li><a href="{{ url('pendidikan') }}">Pelayanan Pendidikan</a></li>
+        <li class="active">Edit Data</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -104,7 +104,7 @@
                         </div>
 
                         <!--Form-->
-                        <form id="demo-bv-wz-form" action="{{ url('kesehatan') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        {{ Form::model($model, array('route' => array('pendidikan.update', $model->id),'files'=> true,'id'=>'demo-bv-wz-form','class'=>'form-horizontal', 'method' => 'PUT')) }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="panel-body">
                                 <div class="tab-content">
@@ -118,38 +118,56 @@
                                     <div id="demo-bv-tab3" class="tab-pane">
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Perjanjian kerjasama dengan Univ/Lembaga</label>
-                                            <div class="col-lg-7">
-    											<input accept=".doc, .docx,.pdf" type="file" name="doc_kerjasama">
+                                            <div class="col-lg-3">
+    											<input accept=".doc, .docx,.pdf" type="file" class="form-control" name="doc_kerjasama">
+                                            </div>
+                                            <div class="col-lg-4">
+    											<input type="text" class="form-control" value="{{ $model->doc_kerjasama }}" disabled />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Rencana Anggaran Biaya </label>
-                                            <div class="col-lg-7">
-                                                <input accept=".doc, .docx,.pdf" type="file" name="doc_anggaran">
+                                            <div class="col-lg-3">
+                                                <input accept=".doc, .docx,.pdf" type="file" class="form-control" name="doc_anggaran">
+                                            </div>
+                                            <div class="col-lg-4">
+    											<input type="text" class="form-control" value="{{ $model->doc_anggaran }}" disabled />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Dokumen Manajemen Resiko  </label>
-                                            <div class="col-lg-7">
-                                                <input accept=".doc, .docx,.pdf" type="file" name="doc_resiko">
+                                            <div class="col-lg-3">
+                                                <input accept=".doc, .docx,.pdf" type="file" class="form-control" name="doc_resiko">
+                                            </div>
+                                            <div class="col-lg-4">
+    											<input type="text" class="form-control" value="{{ $model->doc_resiko }}" disabled />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">TOR Term Of Reference </label>
-                                            <div class="col-lg-7">
-                                                <input accept=".doc, .docx,.pdf" type="file" name="doc_tor">
+                                            <div class="col-lg-3">
+                                                <input accept=".doc, .docx,.pdf" type="file" class="form-control" name="doc_tor">
+                                            </div>
+                                            <div class="col-lg-4">
+    											<input type="text" class="form-control" value="{{ $model->doc_tor }}" disabled />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Laporan Akhir </label>
-                                            <div class="col-lg-7">
-                                                <input accept=".doc, .docx,.pdf" type="file" name="doc_laporan">
+                                            <div class="col-lg-3">
+                                                <input accept=".doc, .docx,.pdf" type="file" class="form-control" name="doc_laporan">
+                                            </div>
+                                            <div class="col-lg-4">
+    											<input type="text" class="form-control" value="{{ $model->doc_laporan }}" disabled />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Laporan Evaluasi </label>
-                                            <div class="col-lg-7">
-                                                <input accept=".doc, .docx,.pdf" type="file" name="doc_evaluasi">
+                                            <div class="col-lg-3">
+                                                <input accept=".doc, .docx,.pdf" type="file" class="form-control" name="doc_evaluasi">
+                                            </div>
+                                            <div class="col-lg-4">
+    											<input type="text" class="form-control" value="{{ $model->doc_evaluasi }}" disabled />
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +190,7 @@
                                     <button type="submit" class="finish btn btn-success">Finish</button>
                                 </div>
                             </div>
-                        </form>
+                        {{ Form::close() }}
                     </div>
                     <!--===================================================-->
                     <!-- End Form wizard with Validation -->
