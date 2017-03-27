@@ -49,3 +49,6 @@ Route::get('bencana/pemberian/delete/{id}', 'PemberianController@destroy');
 //Komunikasi Sosial
 Route::resource('komunikasi', 'KomunikasiController');
 Route::get('komunikasi/delete/{id}', 'KomunikasiController@destroy');
+//Partisipasi Hari Besar
+Route::resource('hari-besar', 'HariBesarController');
+Route::get('hari-besar/delete/{id}', 'HariBesarController@destroy');

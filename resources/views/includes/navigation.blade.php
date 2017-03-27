@@ -76,7 +76,8 @@
                         </li>
 
                         <li class="{{
-                            request()->segment(1) == ('komunikasi')
+                            request()->segment(1) == ('komunikasi') ||
+                            request()->segment(1) == ('hari-besar')
                             ? 'active-link' : null
                         }}">
                             <a href="">
@@ -87,11 +88,12 @@
                             </a>
                             <!--Submenu-->
                             <ul class="collapse {{
-                                request()->segment(1) == ('komunikasi')
+                                request()->segment(1) == ('komunikasi') ||
+                                request()->segment(1) == ('hari-besar')
                                 ? 'in' : null
                             }}">
                                 <li class="{{ request()->segment(1) == ('komunikasi') ? 'active-link' : null }}"><a href="{{ url('komunikasi') }}">Komunikasi Sosial</a></li>
-                                <li><a href="#">Partisipasi Hari Besar</a></li>
+                                <li class="{{ request()->segment(1) == ('hari-besar') ? 'active-link' : null }}"><a href="{{ url('hari-besar') }}">Partisipasi Hari Besar</a></li>
                                 <li><a href="#">Partisipasi Kegiatan Masyarakat</a></li>
                             </ul>
                         </li>

@@ -18,7 +18,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Tambah Data Komunikasi Sosial</h1>
+        <h1 class="page-header text-overflow">Edit Data Komunikasi Sosial</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->

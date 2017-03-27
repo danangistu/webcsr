@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Edit Pelayanan Bantuan Bencana Alam @endsection
+@section('title')Edit Partisipasi Hari Besar @endsection
 @push('style')
 <link href="{{ url('admin') }}/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
 @endpush
@@ -10,7 +10,7 @@
 
 @endpush
 @section('content')
-<?php $path = 'bencana' ?>
+<?php $path = 'hari-besar' ?>
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">
@@ -18,7 +18,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Edit Data Pelayanan Bantuan Bencana Alam</h1>
+        <h1 class="page-header text-overflow">Edit Data Partisipasi Hari Besar</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -27,7 +27,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('bencana') }}">Pelayanan Bantuan Bencana Alam</a></li>
+        <li><a href="{{ url('hari-besar') }}">Partisipasi Hari Besar</a></li>
         <li class="active">Edit Data</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -105,7 +105,7 @@
                         </div>
 
                         <!--Form-->
-                        {{ Form::model($model, array('route' => array('bencana.update', $model->id),'files'=> true,'id'=>'demo-bv-wz-form','class'=>'form-horizontal', 'method' => 'PUT')) }}
+                        {{ Form::model($model, array('route' => array('hari-besar.update', $model->id),'files'=> true,'id'=>'demo-bv-wz-form','class'=>'form-horizontal', 'method' => 'PUT')) }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="panel-body">
                                 <div class="tab-content">
