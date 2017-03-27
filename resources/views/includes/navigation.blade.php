@@ -75,7 +75,10 @@
                             </ul>
                         </li>
 
-                        <li class="">
+                        <li class="{{
+                            request()->segment(1) == ('komunikasi')
+                            ? 'active-link' : null
+                        }}">
                             <a href="">
                                 <i class="fa fa-link"></i>
                                 <span class="menu-title">
@@ -83,8 +86,11 @@
                                 </span>
                             </a>
                             <!--Submenu-->
-                            <ul class="collapse">
-                                <li><a href="#">Komunikasi Sosial</a></li>
+                            <ul class="collapse {{
+                                request()->segment(1) == ('komunikasi')
+                                ? 'in' : null
+                            }}">
+                                <li class="{{ request()->segment(1) == ('komunikasi') ? 'active-link' : null }}"><a href="{{ url('komunikasi') }}">Komunikasi Sosial</a></li>
                                 <li><a href="#">Partisipasi Hari Besar</a></li>
                                 <li><a href="#">Partisipasi Kegiatan Masyarakat</a></li>
                             </ul>
