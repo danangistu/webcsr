@@ -14,6 +14,7 @@
 <script src="{{ url('admin') }}/js/demo/tables-datatables.js"></script>
 @endpush
 @section('content')
+<?php $path = 'kesehatan' ?>
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">

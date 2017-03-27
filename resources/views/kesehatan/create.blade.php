@@ -10,6 +10,7 @@
 
 @endpush
 @section('content')
+<?php $path = 'kesehatan' ?>
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">

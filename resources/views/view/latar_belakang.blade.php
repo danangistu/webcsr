@@ -5,7 +5,7 @@
         <?php for($i=1; $i<7; $i++){  $foto = 'foto_'.$i;?>
         <tr>
             <td with="10%" class="text-center">{{ ucwords($foto) }}</td>
-            <td><img src="{{ asset('contents/kesehatan/foto/'.$latar->$foto) }}" alt="No Image" height="200"></td>
+            <td><img src="{{ asset('contents/'.$path.'/foto/'.$latar->$foto) }}" alt="No Image" height="200"></td>
         </tr>
         <?php } ?>
     </tbody>

@@ -10,6 +10,8 @@
 
 @endpush
 @section('content')
+<?php $path = 'pendidikan' ?>
+
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">

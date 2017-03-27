@@ -37,3 +37,12 @@ Route::get('pendidikan/penerima/edit/{id}', 'PenerimaController@edit');
 Route::post('pendidikan/penerima/edit/{id}', 'PenerimaController@update');
 Route::get('pendidikan/penerima/delete/{id}', 'PenerimaController@destroy');
 Route::get('pendidikan/penerima/view/{id}', 'PenerimaController@show');
+//Pelayanan Bencana Alam
+Route::resource('bencana', 'BencanaController');
+Route::get('bencana/delete/{id}', 'BencanaController@destroy');
+Route::get('bencana/pemberian/{id}', 'PemberianController@index');
+Route::get('bencana/pemberian/create/{id}', 'PemberianController@create');
+Route::post('bencana/pemberian', 'PemberianController@store');
+Route::get('bencana/pemberian/edit/{id}', 'PemberianController@edit');
+Route::post('bencana/pemberian/edit/{id}', 'PemberianController@update');
+Route::get('bencana/pemberian/delete/{id}', 'PemberianController@destroy');

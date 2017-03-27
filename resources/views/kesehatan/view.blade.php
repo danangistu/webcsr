@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('title')View Pelayanan Kesehatan @endsection
 @section('content')
+<?php $path = 'kesehatan' ?>
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">

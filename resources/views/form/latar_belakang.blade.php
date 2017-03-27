@@ -13,7 +13,7 @@
         </div>
         <label class="col-lg-3 control-label">&nbsp </label>
         @if(isset($latar->$foto))
-            <div class="col-lg-9"><img src="{{ asset('contents/kesehatan/foto/'.$latar->$foto) }}" alt="{{ $latar->$foto }}" height="200"/></div>
+            <div class="col-lg-9"><img id="output{{$i}}" src="{{ asset('contents/'.$path.'/foto/'.$latar->$foto) }}" alt="{{ $latar->$foto }}" height="200"/></div>
         @else
             <div class="col-lg-9"><img id="output{{$i}}" height="200"/></div>
         @endif

@@ -50,7 +50,8 @@
                         </li>
                         <li class="{{
                             request()->segment(1) == ('kesehatan') ||
-                            request()->segment(1) == ('pendidikan')
+                            request()->segment(1) == ('pendidikan') ||
+                            request()->segment(1) == ('bencana')
                             ? 'active-link' : null
                         }}">
                             <a href="">
@@ -63,13 +64,45 @@
                             <!--Submenu-->
                             <ul class="collapse {{
                                 request()->segment(1) == ('kesehatan') ||
-                                request()->segment(1) == ('pendidikan')
+                                request()->segment(1) == ('pendidikan') ||
+                                request()->segment(1) == ('bencana')
                                 ? 'in' : null
                             }}">
                                 <li><a href="#">Sarana & Prasarana</a></li>
                                 <li class="{{ request()->segment(1) == ('kesehatan') ? 'active-link' : null }}"><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan</a></li>
                                 <li class="{{ request()->segment(1) == ('pendidikan') ? 'active-link' : null }}"><a href="{{ url('pendidikan') }}">Pelayanan Pendidikan</a></li>
-                                <li><a href="#">Bencana Alam</a></li>
+                                <li class="{{ request()->segment(1) == ('bencana') ? 'active-link' : null }}"><a href="{{ url('bencana') }}">Bencana Alam</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="">
+                                <i class="fa fa-link"></i>
+                                <span class="menu-title">
+                                    <strong>Pembinaan Hubungan</strong>
+                                </span>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li><a href="#">Komunikasi Sosial</a></li>
+                                <li><a href="#">Partisipasi Hari Besar</a></li>
+                                <li><a href="#">Partisipasi Kegiatan Masyarakat</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="">
+                                <i class="fa fa-asterisk"></i>
+                                <span class="menu-title">
+                                    <strong>Pemberdayaan</strong>
+                                </span>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li><a href="#">Modal & Usaha</a></li>
+                                <li><a href="#">Peningkatan Ketrampilan</a></li>
+                                <li><a href="#">Pemasaran Produk</a></li>
+                                <li><a href="#">Riset & Pengembangan</a></li>
                             </ul>
                         </li>
 
