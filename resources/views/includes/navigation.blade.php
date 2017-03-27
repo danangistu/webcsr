@@ -77,7 +77,8 @@
 
                         <li class="{{
                             request()->segment(1) == ('komunikasi') ||
-                            request()->segment(1) == ('hari-besar')
+                            request()->segment(1) == ('hari-besar') ||
+                            request()->segment(1) == ('kegiatan-masyarakat')
                             ? 'active-link' : null
                         }}">
                             <a href="">
@@ -89,12 +90,13 @@
                             <!--Submenu-->
                             <ul class="collapse {{
                                 request()->segment(1) == ('komunikasi') ||
-                                request()->segment(1) == ('hari-besar')
+                                request()->segment(1) == ('hari-besar') ||
+                                request()->segment(1) == ('kegiatan-masyarakat')
                                 ? 'in' : null
                             }}">
                                 <li class="{{ request()->segment(1) == ('komunikasi') ? 'active-link' : null }}"><a href="{{ url('komunikasi') }}">Komunikasi Sosial</a></li>
                                 <li class="{{ request()->segment(1) == ('hari-besar') ? 'active-link' : null }}"><a href="{{ url('hari-besar') }}">Partisipasi Hari Besar</a></li>
-                                <li><a href="#">Partisipasi Kegiatan Masyarakat</a></li>
+                                <li class="{{ request()->segment(1) == ('kegiatan-masyarakat') ? 'active-link' : null }}"><a href="{{ url('kegiatan-masyarakat') }}">Partisipasi Kegiatan Masyarakat</a></li>
                             </ul>
                         </li>
 

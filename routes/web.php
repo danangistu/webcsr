@@ -52,3 +52,6 @@ Route::get('komunikasi/delete/{id}', 'KomunikasiController@destroy');
 //Partisipasi Hari Besar
 Route::resource('hari-besar', 'HariBesarController');
 Route::get('hari-besar/delete/{id}', 'HariBesarController@destroy');
+//Partisipasi Kegiatan Masyarakat
+Route::resource('kegiatan-masyarakat', 'KegiatanController');
+Route::get('kegiatan-masyarakat/delete/{id}', 'KegiatanController@destroy');
