@@ -59,12 +59,12 @@
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $obat = $obat->where('kesehatan_id','=',$model->id)->count(); ?>
+                        <?php $count_obat = $obat->where('kesehatan_id','=',$model->id)->count(); ?>
                             <tr>
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>
-                                    <a href="{{ url('kesehatan/pengobatan/'.$model->id) }}" class="btn {{ $obat > 0 ? 'btn-success':'btn-primary'}} btn-primary">{{ $obat }} Data Pengobatan</a>
+                                    <a href="{{ url('kesehatan/pengobatan/'.$model->id) }}" class="btn {{ $count_obat > 0 ? 'btn-success':'btn-primary'}} btn-primary">{{ $count_obat }} Data Pengobatan</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('kesehatan/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>

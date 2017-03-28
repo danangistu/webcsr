@@ -58,12 +58,12 @@
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $pemberian = $pemberian->where('bencana_id','=',$model->id)->count(); ?>
+                        <?php $count_pemberian = $pemberian->where('bencana_id','=',$model->id)->count(); ?>
                             <tr>
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>
-                                    <a href="{{ url('bencana/pemberian/'.$model->id) }}" class="btn {{ $pemberian > 0 ? 'btn-success':'btn-primary' }}"> {{ $pemberian }} Data Bantuan</a>
+                                    <a href="{{ url('bencana/pemberian/'.$model->id) }}" class="btn {{ $count_pemberian > 0 ? 'btn-success':'btn-primary' }}"> {{ $count_pemberian }} Data Bantuan</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('bencana/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>

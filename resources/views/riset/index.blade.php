@@ -58,12 +58,12 @@
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $roadmap = $roadmap->where('riset_id','=',$model->id)->count(); ?>
+                        <?php $count_roadmap = $roadmap->where('riset_id','=',$model->id)->count(); ?>
                             <tr>
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>
-                                    <a href="{{ url('riset/roadmap/'.$model->id) }}" class="btn {{ $roadmap > 0 ? 'btn-success':'btn-primary' }}"> {{ $roadmap }} Data Roadmap</a>
+                                    <a href="{{ url('riset/roadmap/'.$model->id) }}" class="btn {{ $count_roadmap > 0 ? 'btn-success':'btn-primary' }}"> {{ $count_roadmap }} Data Roadmap</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('riset/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>

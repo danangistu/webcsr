@@ -60,12 +60,12 @@
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                        <?php $penerima = $penerima->where('pendidikan_id','=',$model->id)->count(); ?>
+                        <?php $count_penerima = $penerima->where('pendidikan_id','=',$model->id)->count(); ?>
                             <tr>
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>
-                                    <a href="{{ url('pendidikan/penerima/'.$model->id) }}" class="btn {{ $penerima > 0 ? 'btn-success':'btn-primary' }}"> {{ $penerima }} Data Penerima</a>
+                                    <a href="{{ url('pendidikan/penerima/'.$model->id) }}" class="btn {{ $count_penerima > 0 ? 'btn-success':'btn-primary' }}"> {{ $count_penerima }} Data Penerima</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('pendidikan/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
