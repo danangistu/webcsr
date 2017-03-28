@@ -79,3 +79,6 @@ Route::post('riset/roadmap', 'RisetRoadmapController@store');
 Route::get('riset/roadmap/edit/{id}', 'RisetRoadmapController@edit');
 Route::post('riset/roadmap/edit/{id}', 'RisetRoadmapController@update');
 Route::get('riset/roadmap/delete/{id}', 'RisetRoadmapController@destroy');
+//Setting
+Route::get('setting', 'SettingController@index');
+Route::post('setting', 'SettingController@store');

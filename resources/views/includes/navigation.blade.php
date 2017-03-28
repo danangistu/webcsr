@@ -8,12 +8,12 @@
         <div id="mainnav-shortcut">
             <ul class="list-unstyled">
                 <li class="col-xs-4" data-content="Profile">
-                    <a id="demo-toggle-aside" class="shortcut-grid" href="#">
+                    <a id="demo-toggle-aside" class="shortcut-grid" href="{{ url('profile') }}">
                         <i class="fa fa-user"></i>
                     </a>
                 </li>
                 <li class="col-xs-4" data-content="Settings">
-                    <a id="demo-alert" class="shortcut-grid" href="#">
+                    <a id="demo-alert" class="shortcut-grid" href="{{ url('setting') }}">
                         <i class="fa fa-cog"></i>
                     </a>
                 </li>
@@ -125,6 +125,49 @@
                                 <li class="{{ request()->segment(1) == ('ketrampilan') ? 'active-link' : null }}"><a href="{{ url('ketrampilan') }}">Peningkatan Ketrampilan</a></li>
                                 <li class="{{ request()->segment(1) == ('pemasaran') ? 'active-link' : null }}"><a href="{{ url('pemasaran') }}">Pemasaran Produk</a></li>
                                 <li class="{{ request()->segment(1) == ('riset') ? 'active-link' : null }}"><a href="{{ url('riset') }}">Riset & Pengembangan</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="">
+                                <i class="fa fa-users"></i>
+                                <span class="menu-title">
+                                    <strong>User Privileges</strong>
+                                </span>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class=""><a href="#">Privileges</a></li>
+                                <li class=""><a href="#">Users</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="">
+                                <i class="fa fa-history"></i>
+                                <span class="menu-title">
+                                    <strong>Logs</strong>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="{{
+                            request()->segment(1) == ('setting')
+                            ? 'active-link' : null
+                        }}">
+                            <a href="">
+                                <i class="fa fa-cogs"></i>
+                                <span class="menu-title">
+                                    <strong>Settings</strong>
+                                </span>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse {{
+                                request()->segment(1) == ('setting')
+                                ? 'in' : null
+                            }}">
+                                <li class="{{ request()->segment(1) == ('setting') ? 'active-link' : null }}"><a href="{{ url('setting') }}">System Setting</a></li>
+                                <li class=""><a href="#">Profile</a></li>
                             </ul>
                         </li>
 

@@ -1,10 +1,13 @@
+<?php
+	$setting = App\Models\Setting::firstOrFail();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login page | WEB CSR</title>
-
+	<title>{{ $setting->meta_title }} | Login</title>
+	<link rel='shortcut icon' type='image/x-icon' href="{{ asset('contents/'.$setting->favicon) }}" />
 
 	<!--STYLESHEET-->
 	<!--=================================================-->
@@ -31,7 +34,7 @@
     <div id="container" class="cls-container">
         <!-- BACKGROUND IMAGE -->
         <!--===================================================-->
-        <div class="bg-img img-balloon"><img src="{{ asset('contents/bg.jpg') }}"></div>
+        <div class="bg-img img-balloon"><img src="{{ asset('contents/'.$setting->bg_login) }}"></div>
 
         <!-- HEADER -->
         <!--===================================================-->
@@ -39,7 +42,7 @@
             <div class="cls-brand">
                 <a class="box-inline" href="{{ url('/') }}">
                     <!-- <img alt="Nifty Admin" src="img/logo.png" class="brand-icon"> -->
-                    <span class="brand-title">WEB CSR<span class="text-thin">Admin</span></span>
+                    <span class="brand-title">{{ $setting->system_name }} <span class="text-thin">Admin</span></span>
                 </a>
             </div>
         </div>

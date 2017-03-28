@@ -1,9 +1,13 @@
+<?php
+	$setting = App\Models\Setting::firstOrFail();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@yield('title') | WebCSR</title>
+	<title>{{ $setting->meta_title }} | @yield('title')</title>
+	<link rel='shortcut icon' type='image/x-icon' href="{{ asset('contents/'.$setting->favicon) }}" />
 
     @include('includes.style')
 	@include('includes.script')

@@ -7,9 +7,9 @@
         <!--================================-->
         <div class="navbar-header">
             <a href="{{ url('/') }}" class="navbar-brand">
-                <img src="{{ asset('admin') }}/img/logo.png" alt="Logo" class="brand-icon">
+                <img src="{{ asset('contents/'.$setting->logo) }}" alt="Logo" class="brand-icon">
                 <div class="brand-title">
-                    <span class="brand-text">WEB CSR</span>
+                    <span class="brand-text">{{ $setting->system_name }}</span>
                 </div>
             </a>
         </div>
@@ -53,12 +53,12 @@
                         <!-- User dropdown menu -->
                         <ul class="head-list">
                             <li>
-                                <a href="#">
+                                <a href="{{ url('profile') }}">
                                     <i class="fa fa-user fa-fw fa-lg"></i> Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ url('setting') }}">
                                     <!-- <span class="label label-success pull-right">New</span> -->
                                     <i class="fa fa-gear fa-fw fa-lg"></i> Settings
                                 </a>

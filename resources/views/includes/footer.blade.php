@@ -29,7 +29,7 @@
 
     <!-- Visible when footer positions are static -->
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <div class="hide-fixed pull-right pad-rgt">Web CSR</div>
+    <div class="hide-fixed pull-right pad-rgt">{{ $setting->system_name }}</div>
 
 
 
@@ -37,7 +37,7 @@
     <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-    <p class="pad-lft">&#0169; 2017 Danang Istoe</p>
+    <p class="pad-lft">&#0169; {{ $setting->copyright }}</p>
 
 
 
