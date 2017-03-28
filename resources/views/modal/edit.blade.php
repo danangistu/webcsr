@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Edit Partisipasi Kegiatan Masyarakat @endsection
+@section('title')Edit Pelayanan Bantuan Pengembangan dan Modal Usaha @endsection
 @push('style')
 <link href="{{ url('admin') }}/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
 @endpush
@@ -10,7 +10,7 @@
 
 @endpush
 @section('content')
-<?php $path = 'kegiatan-masyarakat' ?>
+<?php $path = 'modal' ?>
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">
@@ -18,7 +18,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Edit Data Partisipasi Kegiatan Masyarakat</h1>
+        <h1 class="page-header text-overflow">Edit Data Pelayanan Bantuan Pengembangan dan Modal Usaha</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -27,7 +27,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('kegiatan-masyarakat') }}">Partisipasi Kegiatan Masyarakat</a></li>
+        <li><a href="{{ url('modal') }}">Pelayanan Bantuan Pengembangan dan Modal Usaha</a></li>
         <li class="active">Edit Data</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -105,7 +105,7 @@
                         </div>
 
                         <!--Form-->
-                        {{ Form::model($model, array('route' => array('kegiatan-masyarakat.update', $model->id),'files'=> true,'id'=>'demo-bv-wz-form','class'=>'form-horizontal', 'method' => 'PUT')) }}
+                        {{ Form::model($model, array('route' => array('modal.update', $model->id),'files'=> true,'id'=>'demo-bv-wz-form','class'=>'form-horizontal', 'method' => 'PUT')) }}
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="panel-body">
                                 <div class="tab-content">

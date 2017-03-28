@@ -100,7 +100,10 @@
                             </ul>
                         </li>
 
-                        <li class="">
+                        <li class="{{
+                            request()->segment(1) == ('modal')
+                            ? 'active-link' : null
+                        }}">
                             <a href="">
                                 <i class="fa fa-asterisk"></i>
                                 <span class="menu-title">
@@ -108,8 +111,11 @@
                                 </span>
                             </a>
                             <!--Submenu-->
-                            <ul class="collapse">
-                                <li><a href="#">Modal & Usaha</a></li>
+                            <ul class="collapse {{
+                                request()->segment(1) == ('modal')
+                                ? 'in' : null
+                            }}">
+                                <li class="{{ request()->segment(1) == ('modal') ? 'active-link' : null }}"><a href="{{ url('modal') }}">Modal & Usaha</a></li>
                                 <li><a href="#">Peningkatan Ketrampilan</a></li>
                                 <li><a href="#">Pemasaran Produk</a></li>
                                 <li><a href="#">Riset & Pengembangan</a></li>

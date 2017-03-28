@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Models\Bencana;
 use App\Models\BencanaPemberian;
 
-class pemberianController extends AdminController
+class PemberianController extends AdminController
 {
     public function __construct(Bencana $bencana, BencanaPemberian $pemberian)
     {

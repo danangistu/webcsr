@@ -22,11 +22,11 @@ class modalController extends AdminController
         $this->view = 'modal.';
     }
 
-    public function index(modalPemberian $pemberian)
+    public function index(ModalRoadmap $roadmap)
     {
         return view($this->view.'index',[
             'models'=>$this->model->orderBy('id','desc')->get(),
-            'pemberian'=>$pemberian,
+            'roadmap'=>$roadmap,
         ]);
     }
 

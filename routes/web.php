@@ -55,3 +55,12 @@ Route::get('hari-besar/delete/{id}', 'HariBesarController@destroy');
 //Partisipasi Kegiatan Masyarakat
 Route::resource('kegiatan-masyarakat', 'KegiatanController');
 Route::get('kegiatan-masyarakat/delete/{id}', 'KegiatanController@destroy');
+//Pelayanan Bantuan Modal
+Route::resource('modal', 'ModalController');
+Route::get('modal/delete/{id}', 'ModalController@destroy');
+Route::get('modal/roadmap/{id}', 'RoadmapController@index');
+Route::get('modal/roadmap/create/{id}', 'RoadmapController@create');
+Route::post('modal/roadmap', 'RoadmapController@store');
+Route::get('modal/roadmap/edit/{id}', 'RoadmapController@edit');
+Route::post('modal/roadmap/edit/{id}', 'RoadmapController@update');
+Route::get('modal/roadmap/delete/{id}', 'RoadmapController@destroy');
