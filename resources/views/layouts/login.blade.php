@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login page | Nifty - Responsive admin template.</title>
+	<title>Login page | WEB CSR</title>
 
 
 	<!--STYLESHEET-->

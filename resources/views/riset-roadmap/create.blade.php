@@ -39,8 +39,8 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('modal') }}">Pelayanan Bantuan Pengembangan dan Modal Usaha</a></li>
-        <li><a href="{{ url('modal/roadmap') }}">Roadmap</a></li>
+        <li><a href="{{ url('riset') }}">Riset dan Pengembangan</a></li>
+        <li><a href="{{ url('riset/roadmap') }}">Roadmap</a></li>
         <li class="active">Tambah Data</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -55,9 +55,9 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Tambah Data Roadmap</h3>
                     </div>
-                    <form id="form" action="{{ url('modal/roadmap') }}" data-toggle="validator" method="post" enctype="multipart/form-data">
+                    <form id="form" action="{{ url('riset/roadmap') }}" data-toggle="validator" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="modal_id" value="{{ $modal_id }}">
+                        <input type="hidden" name="riset_id" value="{{ $riset_id }}">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-12">

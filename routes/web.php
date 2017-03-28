@@ -70,3 +70,12 @@ Route::get('ketrampilan/delete/{id}', 'KetrampilanController@destroy');
 //Pelayanan Pemasaran
 Route::resource('pemasaran', 'PemasaranController');
 Route::get('pemasaran/delete/{id}', 'PemasaranController@destroy');
+//Pelayanan Bantuan Modal
+Route::resource('riset', 'RisetController');
+Route::get('riset/delete/{id}', 'RisetController@destroy');
+Route::get('riset/roadmap/{id}', 'RisetRoadmapController@index');
+Route::get('riset/roadmap/create/{id}', 'RisetRoadmapController@create');
+Route::post('riset/roadmap', 'RisetRoadmapController@store');
+Route::get('riset/roadmap/edit/{id}', 'RisetRoadmapController@edit');
+Route::post('riset/roadmap/edit/{id}', 'RisetRoadmapController@update');
+Route::get('riset/roadmap/delete/{id}', 'RisetRoadmapController@destroy');
