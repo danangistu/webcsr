@@ -6,7 +6,7 @@
         <!--Brand logo & name-->
         <!--================================-->
         <div class="navbar-header">
-            <a href="index.html" class="navbar-brand">
+            <a href="{{ url('/') }}" class="navbar-brand">
                 <img src="{{ asset('admin') }}/img/logo.png" alt="Logo" class="brand-icon">
                 <div class="brand-title">
                     <span class="brand-text">WEB CSR</span>
@@ -32,7 +32,7 @@
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <!--End Navigation toogle button-->
 
-                
+
 
             </ul>
             <ul class="nav navbar-top-links pull-right">

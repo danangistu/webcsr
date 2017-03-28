@@ -101,7 +101,8 @@
                         </li>
 
                         <li class="{{
-                            request()->segment(1) == ('modal')
+                            request()->segment(1) == ('modal') ||
+                            request()->segment(1) == ('ketrampilan')
                             ? 'active-link' : null
                         }}">
                             <a href="">
@@ -112,11 +113,12 @@
                             </a>
                             <!--Submenu-->
                             <ul class="collapse {{
-                                request()->segment(1) == ('modal')
+                                request()->segment(1) == ('modal') ||
+                                request()->segment(1) == ('ketrampilan')
                                 ? 'in' : null
                             }}">
                                 <li class="{{ request()->segment(1) == ('modal') ? 'active-link' : null }}"><a href="{{ url('modal') }}">Modal & Usaha</a></li>
-                                <li><a href="#">Peningkatan Ketrampilan</a></li>
+                                <li class="{{ request()->segment(1) == ('ketrampilan') ? 'active-link' : null }}"><a href="{{ url('ketrampilan') }}">Peningkatan Ketrampilan</a></li>
                                 <li><a href="#">Pemasaran Produk</a></li>
                                 <li><a href="#">Riset & Pengembangan</a></li>
                             </ul>

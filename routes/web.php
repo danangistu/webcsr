@@ -64,3 +64,6 @@ Route::post('modal/roadmap', 'RoadmapController@store');
 Route::get('modal/roadmap/edit/{id}', 'RoadmapController@edit');
 Route::post('modal/roadmap/edit/{id}', 'RoadmapController@update');
 Route::get('modal/roadmap/delete/{id}', 'RoadmapController@destroy');
+//Pelayanan Ketrampilan
+Route::resource('ketrampilan', 'KetrampilanController');
+Route::get('ketrampilan/delete/{id}', 'KetrampilanController@destroy');
