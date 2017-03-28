@@ -102,7 +102,8 @@
 
                         <li class="{{
                             request()->segment(1) == ('modal') ||
-                            request()->segment(1) == ('ketrampilan')
+                            request()->segment(1) == ('ketrampilan') ||
+                            request()->segment(1) == ('pemasaran')
                             ? 'active-link' : null
                         }}">
                             <a href="">
@@ -114,12 +115,13 @@
                             <!--Submenu-->
                             <ul class="collapse {{
                                 request()->segment(1) == ('modal') ||
-                                request()->segment(1) == ('ketrampilan')
+                                request()->segment(1) == ('ketrampilan') ||
+                                request()->segment(1) == ('pemasaran')
                                 ? 'in' : null
                             }}">
                                 <li class="{{ request()->segment(1) == ('modal') ? 'active-link' : null }}"><a href="{{ url('modal') }}">Modal & Usaha</a></li>
                                 <li class="{{ request()->segment(1) == ('ketrampilan') ? 'active-link' : null }}"><a href="{{ url('ketrampilan') }}">Peningkatan Ketrampilan</a></li>
-                                <li><a href="#">Pemasaran Produk</a></li>
+                                <li class="{{ request()->segment(1) == ('pemasaran') ? 'active-link' : null }}"><a href="{{ url('pemasaran') }}">Pemasaran Produk</a></li>
                                 <li><a href="#">Riset & Pengembangan</a></li>
                             </ul>
                         </li>

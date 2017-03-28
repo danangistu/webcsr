@@ -67,3 +67,6 @@ Route::get('modal/roadmap/delete/{id}', 'RoadmapController@destroy');
 //Pelayanan Ketrampilan
 Route::resource('ketrampilan', 'KetrampilanController');
 Route::get('ketrampilan/delete/{id}', 'KetrampilanController@destroy');
+//Pelayanan Pemasaran
+Route::resource('pemasaran', 'PemasaranController');
+Route::get('pemasaran/delete/{id}', 'PemasaranController@destroy');
