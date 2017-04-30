@@ -79,6 +79,9 @@ Route::post('riset/roadmap', 'RisetRoadmapController@store');
 Route::get('riset/roadmap/edit/{id}', 'RisetRoadmapController@edit');
 Route::post('riset/roadmap/edit/{id}', 'RisetRoadmapController@update');
 Route::get('riset/roadmap/delete/{id}', 'RisetRoadmapController@destroy');
+//Regulasi
+Route::resource('regulasi', 'RegulasiController');
+Route::get('regulasi/delete/{id}', 'RegulasiController@destroy');
 //Setting
 Route::get('setting', 'SettingController@index');
 Route::post('setting', 'SettingController@store');

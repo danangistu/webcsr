@@ -128,6 +128,16 @@
                             </ul>
                         </li>
 
+                        <li class="{{ request()->segment(1) == 'regulasi' ? 'active-link' : null }}">
+                            <a href="{{ url('regulasi') }}">
+                                <i class="fa fa-clipboard"></i>
+                                <span class="menu-title">
+                                    <strong>Regulasi</strong>
+                                    <!-- <span class="label label-success pull-right">Top</span> -->
+                                </span>
+                            </a>
+                        </li>
+
                         <li class="">
                             <a href="">
                                 <i class="fa fa-users"></i>

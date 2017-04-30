@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-lg-3 control-label">Kerjasama</label>
+        <label class="col-lg-3 control-label">Latar Belakang Kegiatan</label>
         <div class="col-lg-7">
             <textarea class="form-control" name="kerjasama">{{ isset($model->kerjasama) ? $model->kerjasama:null }}</textarea>
         </div>

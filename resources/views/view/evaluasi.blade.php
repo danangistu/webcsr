@@ -6,7 +6,7 @@
             <td>{{ $evaluasi->laporan }}</td>
         </tr>
         <tr>
-            <td>Ringkasan Kegiatan</td>
+            <td>Saran</td>
             <td>{{ $evaluasi->ringkasan }}</td>
         </tr>
         <tr>

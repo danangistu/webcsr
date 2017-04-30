@@ -1,6 +1,6 @@
 <div id="demo-bv-tab4" class="tab-pane">
     <div class="form-group">
-        <label class="col-lg-3 control-label">Latar Belakang Kegiatan</label>
+        <label class="col-lg-3 control-label">Ringkasan Kegiatan</label>
         <div class="col-lg-7">
             <textarea class="form-control" name="latar_belakang">{{ isset($latar->latar_belakang) ? $latar->latar_belakang:null }}</textarea>
         </div>

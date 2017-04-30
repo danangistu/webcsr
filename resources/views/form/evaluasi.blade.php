@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-lg-3 control-label">Ringkasan Kegiatan</label>
+        <label class="col-lg-3 control-label">Saran</label>
         <div class="col-lg-7">
             <textarea class="form-control" name="ringkasan">{{ isset($evaluasi->ringkasan) ? $evaluasi->ringkasan:null }}</textarea>
         </div>

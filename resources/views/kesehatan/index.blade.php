@@ -52,7 +52,7 @@
                     <thead>
                         <tr>
                             <th width="10%">Tempat</th>
-                            <th class="min-tablet">Kerjasama</th>
+                            <th class="min-tablet">Latar Belakang Kegiatan</th>
                             <th width="10%">Jenis Pengobatan</th>
                             <th width="15%">Action</th>
                         </tr>

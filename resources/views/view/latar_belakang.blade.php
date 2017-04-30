@@ -1,4 +1,4 @@
-<h4 class="text-thin">Latar Belakang</h4>
+<h4 class="text-thin">Ringkasan Kegiatan</h4>
 <p>{{ $latar->latar_belakang }}</p>
 <table class="table table-striped table-hover table-bordered">
     <tbody>
