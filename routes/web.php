@@ -82,6 +82,9 @@ Route::get('riset/roadmap/delete/{id}', 'RisetRoadmapController@destroy');
 //Regulasi
 Route::resource('regulasi', 'RegulasiController');
 Route::get('regulasi/delete/{id}', 'RegulasiController@destroy');
+//Regulasi
+Route::resource('quick-win', 'QuickController');
+Route::get('quick-win/delete/{id}', 'QuickController@destroy');
 //Setting
 Route::get('setting', 'SettingController@index');
 Route::post('setting', 'SettingController@store');

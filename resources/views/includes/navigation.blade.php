@@ -138,6 +138,16 @@
                             </a>
                         </li>
 
+                        <li class="{{ request()->segment(1) == 'quick-win' ? 'active-link' : null }}">
+                            <a href="{{ url('quick-win') }}">
+                                <i class="fa fa-external-link"></i>
+                                <span class="menu-title">
+                                    <strong>Quick Win</strong>
+                                    <!-- <span class="label label-success pull-right">Top</span> -->
+                                </span>
+                            </a>
+                        </li>
+
                         <li class="">
                             <a href="">
                                 <i class="fa fa-users"></i>

@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Create Pelayanan Kesehatan @endsection
+@section('title')Create Regulasi @endsection
 @push('style')
 <link href="{{ url('admin') }}/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
 @endpush
