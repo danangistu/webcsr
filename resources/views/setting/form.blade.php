@@ -36,6 +36,14 @@
         };
       reader.readAsDataURL(event.target.files[0]);
     };
+    var loadFile4 = function(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output4');
+            output.src = reader.result;
+        };
+      reader.readAsDataURL(event.target.files[0]);
+    };
 </script>
 @endpush
 @section('content')
@@ -113,10 +121,29 @@
                                         <input class="form-control" accept="image/*" type="file" name="bg_login" onchange="loadFile3(event)">
                                     </div>
                                 </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Dashboard Banner (1024x300)</label></br>
+                                        <img src="{{ url('contents/'.$model->dashboard_banner) }}" id="output4" height="200"/>
+                                        <input class="form-control" accept="image/*" type="file" name="dashboard_banner" onchange="loadFile4(event)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Dashboard Title</label>
+                                        <input class="form-control" type="text" name="dashboard_title" value="{{ $model->dashboard_title }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Dashboard Description</label>
+                                        <textarea class="form-control" name="dashboard_description" rows='10'>{{ $model->dashboard_description }} </textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="panel-footer text-right">
-                            <button class="btn btn-info" type="submit">Submit</button>
+                            <button class="btn btn-info" type="submit" >Submit</button>
                         </div>
                     </form>
                     <!--===================================================-->

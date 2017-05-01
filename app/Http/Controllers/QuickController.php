@@ -30,6 +30,12 @@ class QuickController extends AdminController
             return redirect('quick-win')->with('error', $e->getMessage());
         }
     }
+    public function show($id)
+    {
+        return view($this->view.'view',[
+            'model' => $this->model->findOrFail($id),
+        ]);
+    }
     public function edit($id)
     {
         return view($this->view.'edit',[
