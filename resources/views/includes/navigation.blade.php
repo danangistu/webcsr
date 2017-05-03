@@ -49,6 +49,7 @@
                             </a>
                         </li>
                         <li class="{{
+                            request()->segment(1) == ('sarana') ||
                             request()->segment(1) == ('kesehatan') ||
                             request()->segment(1) == ('pendidikan') ||
                             request()->segment(1) == ('bencana')
@@ -63,12 +64,13 @@
 
                             <!--Submenu-->
                             <ul class="collapse {{
+                                request()->segment(1) == ('sarana') ||
                                 request()->segment(1) == ('kesehatan') ||
                                 request()->segment(1) == ('pendidikan') ||
                                 request()->segment(1) == ('bencana')
                                 ? 'in' : null
                             }}">
-                                <li><a href="#">Sarana & Prasarana</a></li>
+                                <li class="{{ request()->segment(1) == ('sarana') ? 'active-link' : null }}"><a href="{{ url('sarana') }}">Sarana & Prasarana</a></li>
                                 <li class="{{ request()->segment(1) == ('kesehatan') ? 'active-link' : null }}"><a href="{{ url('kesehatan') }}">Pelayanan Kesehatan</a></li>
                                 <li class="{{ request()->segment(1) == ('pendidikan') ? 'active-link' : null }}"><a href="{{ url('pendidikan') }}">Pelayanan Pendidikan</a></li>
                                 <li class="{{ request()->segment(1) == ('bencana') ? 'active-link' : null }}"><a href="{{ url('bencana') }}">Bencana Alam</a></li>

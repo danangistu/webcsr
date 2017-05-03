@@ -18,6 +18,9 @@
 Auth::routes();
 Route::get('/', 'DashboardController@index');
 Route::get('logout', 'Auth\LoginController@logout');
+//Sarana dan Prasarana
+Route::resource('sarana', 'SaranaController');
+Route::get('sarana/delete/{id}', 'SaranaController@destroy');
 //Pelayanan Kesehatan
 Route::resource('kesehatan', 'KesehatanController');
 Route::get('kesehatan/delete/{id}', 'KesehatanController@destroy');
