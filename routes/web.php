@@ -21,6 +21,8 @@ Route::get('logout', 'Auth\LoginController@logout');
 //Sarana dan Prasarana
 Route::resource('sarana', 'SaranaController');
 Route::get('sarana/delete/{id}', 'SaranaController@destroy');
+Route::post('sarana/anggaran', 'SaranaController@anggaran');
+Route::get('sarana/get-anggaran/{id}', 'SaranaController@getAnggaran');
 //Pelayanan Kesehatan
 Route::resource('kesehatan', 'KesehatanController');
 Route::get('kesehatan/delete/{id}', 'KesehatanController@destroy');
@@ -88,6 +90,11 @@ Route::get('regulasi/delete/{id}', 'RegulasiController@destroy');
 //Regulasi
 Route::resource('quick-win', 'QuickController');
 Route::get('quick-win/delete/{id}', 'QuickController@destroy');
+//Kode
+Route::resource('kode-pendanaan', 'KodeController');
+Route::get('kode-pendanaan/delete/{id}', 'KodeController@destroy');
+Route::get('cek-kode/{kode}', 'KodeController@cekCode');
+
 //Setting
 Route::get('setting', 'SettingController@index');
 Route::post('setting', 'SettingController@store');

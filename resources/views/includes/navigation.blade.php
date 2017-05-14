@@ -150,6 +150,24 @@
                             </a>
                         </li>
 
+                        <li class="{{
+                            request()->segment(1) == ('kode-pendanaan') ||
+                            request()->segment(1) == ('laporan-pendanaan')
+                            ? 'active-link' : null
+                        }}">
+                            <a href="">
+                                <i class="fa fa-line-chart"></i>
+                                <span class="menu-title">
+                                    <strong>Jenis Pendanaan</strong>
+                                </span>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ request()->segment(1) == ('kode-pendanaan') ? 'active-link' : null }}"><a href="{{ url('kode-pendanaan') }}">Kode Pendanaan</a></li>
+                                <li class="{{ request()->segment(1) == ('jenis-pendanaan') ? 'active-link' : null }}"><a href="{{ url('laporan-pendanaan') }}">Laporan Jenis Pendanaan</a></li>
+                            </ul>
+                        </li>
+
                         <li class="">
                             <a href="">
                                 <i class="fa fa-users"></i>

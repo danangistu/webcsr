@@ -162,4 +162,34 @@ class SaranaController extends AdminController
             return redirect('sarana')->with('error', $e->getMessage());
         }
     }
+
+    public function anggaran(Request $request)
+    {
+      $inputs = $request->all();
+      try{
+        $model = $this->model->findOrFail($inputs['masterId']);
+        $input = $request->only(['kode','anggaran']);
+        $model->update($input);
+        return redirect('sarana')->with('success', 'Data berhasil diubah.');
+      }catch(\Exception $e){
+        return redirect('sarana')->with('error', $e->getMessage());
+      }
+    }
+    public function getAnggaran($id)
+    {
+      try{
+        $model = $this->model->select('saranas.id','saranas.kode','saranas.anggaran','kodes.title')
+          ->join('kodes','kodes.kode','=','saranas.kode')
+          ->where('saranas.id',$id)->firstOrFail();
+        return view('includes.anggaran-popup',[
+            'model'=> $model
+        ]);
+      }
+      catch(\Exception $e){
+        $model = $this->model->findOrFail($id);
+        return view('includes.anggaran-popup',[
+            'model'=> $model
+        ]);
+      }
+    }
 }
