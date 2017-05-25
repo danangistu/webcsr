@@ -21,7 +21,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Bantuan Pelayanan pendidikan</h1>
+        <h1 class="page-header text-overflow">Bantuan Pelayanan Pendidikan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -67,7 +67,7 @@
                                 <td>{{ $model->birthdate }}</td>
                                 <td>{{ $model->alamat }}</td>
                                 <td>{{ $model->pendidikan }}</td>
-                                <td>{{ $model->biaya }}</td>
+                                <td class="text-right">{{ 'Rp. '.number_format($model->biaya,2,',','.') }}</td>
                                 <td><img src="{{ url('contents/pendidikan/foto/'.$model->foto) }}" height="100"></td>
                                 <td>
                                     <a href="{{ url('pendidikan/penerima/view/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>

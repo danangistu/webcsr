@@ -57,6 +57,12 @@
                                         <input name="obat" type="text" class="form-control" value="{{ $model->obat }}" required>
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                      <label class="control-label">Anggaran</label>
+                                      <input name="anggaran" type="number" class="form-control" value="{{ isset($model) ? $model->anggaran:null }}" required>
+                                  </div>
+                                </div>
                             </div>
                         </div>
                         <div class="panel-footer text-right">

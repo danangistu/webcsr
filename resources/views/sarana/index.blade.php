@@ -52,6 +52,7 @@
                         <tr>
                             <th>Tempat</th>
                             <th class="min-tablet">Latar Belakang Kegiatan</th>
+                            <th>Tahun</th>
                             <th>Anggaran</th>
                             <th width="10%"></th>
                             <th width="13%">Action</th>
@@ -59,9 +60,10 @@
                     </thead>
                     <tbody>
                         @foreach($models as $model)
-                            <tr>
+                            <tr class="{{ $model->kode == '' ? 'danger':null }}">
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
+                                <td>{{ $model->tahun }}</td>
                                 <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
                                 <td><button id="{{ $model->id }}" type="button" class="btn btn-success btn-anggaran" data-toggle="modal" data-target="#modalAnggaran">Edit Anggaran</button></td>
                                 <td>

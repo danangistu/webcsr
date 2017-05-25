@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
 use App\Models\Pendidikan;
 use App\Models\PendidikanPenerima;
-
+use DB;
 class PenerimaController extends AdminController
 {
     public function __construct(Pendidikan $pendidikan, PendidikanPenerima $penerima)
@@ -31,11 +31,17 @@ class PenerimaController extends AdminController
     public function store(Request $request){
         $inputs = $request->all();
         try{
+            DB::beginTransaction();
             $inputs['birthdate'] = $this->format_date($inputs['birthdate']);
             $inputs['foto'] = $this->upload_file($inputs,$this->model,$request,'foto','pendidikan/foto');
+            $anggaran = $this->pendidikan->findOrFail($inputs['pendidikan_id']);
+            $anggaran->anggaran = $anggaran->anggaran+$inputs['biaya'];
+            $anggaran->save();
             $this->model->create($inputs);
+            DB::commit();
             return redirect('pendidikan/penerima/'.$inputs['pendidikan_id'])->with('success', 'Data berhasil ditambahkan.');
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('pendidikan/penerima/'.$inputs['pendidikan_id'])->with('error', $e->getMessage());
         }
     }
@@ -48,13 +54,21 @@ class PenerimaController extends AdminController
     }
     public function update(Request $request,$id){
         $inputs = $request->all();
+        $model = $this->model->findOrFail($id);
         try{
+            DB::beginTransaction();
             $inputs['birthdate'] = $this->format_date($inputs['birthdate']);
             if(isset($inputs['foto']))
                 $inputs['foto'] = $this->upload_file($inputs,$this->model,$request,'foto','pendidikan/foto');
-            $this->model->findOrFail($id)->update($inputs);
+            $anggaran = $this->pendidikan->findOrFail($inputs['pendidikan_id']);
+            $anggaran->anggaran = $anggaran->anggaran-$model->biaya;
+            $anggaran->anggaran = $anggaran->anggaran+$inputs['biaya'];
+            $anggaran->save();
+            $model->update($inputs);
+            DB::commit();
             return redirect('pendidikan/penerima/'.$inputs['pendidikan_id'])->with('success', 'Data berhasil diedit.');
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('pendidikan/penerima/'.$inputs['pendidikan_id'])->with('error', $e->getMessage());
         }
     }
@@ -62,10 +76,15 @@ class PenerimaController extends AdminController
     {
         $model = $this->model->findOrFail($id);
         try{
+            DB::beginTransaction();
+            $anggaran = $this->pendidikan->findOrFail($model->pendidikan_id);
+            $anggaran->anggaran = $anggaran->anggaran-$model->biaya;
+            $anggaran->save();
             $model->delete();
+            DB::commit();
             return redirect('pendidikan/penerima/'.$model['pendidikan_id'])->with('success', 'Data berhasil dihapus.');
-
         }catch(\Exception $e){
+          DB::rollBack();
             return redirect('pendidikan/penerima/'.$model['pendidikan_id'])->with('error', $e->getMessage());
         }
     }

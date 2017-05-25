@@ -50,6 +50,7 @@
         	<!--Tabs Content-->
         	<div class="tab-content">
         		<div id="demo-stk-lft-tab-1" class="tab-pane fade active in">
+              <p>Tahun : {{ $model->tahun }}</p>
         			<h4 class="text-thin">Tempat : {{ $model->tempat }}</h4>
                     <h4 class="text-thin">Latar Belakang Kegiatan :</h4>
         			<p>{{ $model->kerjasama }}</p>

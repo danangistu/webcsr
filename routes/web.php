@@ -32,6 +32,8 @@ Route::post('kesehatan/pengobatan', 'PengobatanController@store');
 Route::get('kesehatan/pengobatan/edit/{id}', 'PengobatanController@edit');
 Route::post('kesehatan/pengobatan/edit/{id}', 'PengobatanController@update');
 Route::get('kesehatan/pengobatan/delete/{id}', 'PengobatanController@destroy');
+Route::post('kesehatan/anggaran', 'KesehatanController@anggaran');
+Route::get('kesehatan/get-anggaran/{id}', 'KesehatanController@getAnggaran');
 //Pelayanan Pendidikan
 Route::resource('pendidikan', 'PendidikanController');
 Route::get('pendidikan/delete/{id}', 'PendidikanController@destroy');
@@ -42,6 +44,8 @@ Route::get('pendidikan/penerima/edit/{id}', 'PenerimaController@edit');
 Route::post('pendidikan/penerima/edit/{id}', 'PenerimaController@update');
 Route::get('pendidikan/penerima/delete/{id}', 'PenerimaController@destroy');
 Route::get('pendidikan/penerima/view/{id}', 'PenerimaController@show');
+Route::post('pendidikan/anggaran', 'PendidikanController@anggaran');
+Route::get('pendidikan/get-anggaran/{id}', 'PendidikanController@getAnggaran');
 //Pelayanan Bencana Alam
 Route::resource('bencana', 'BencanaController');
 Route::get('bencana/delete/{id}', 'BencanaController@destroy');

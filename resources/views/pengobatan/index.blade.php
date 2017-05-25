@@ -51,8 +51,9 @@
                 <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th width="45%">Penyakit</th>
-                            <th width="45%">Obat</th>
+                            <th width="30%">Penyakit</th>
+                            <th width="30%">Obat</th>
+                            <th width="30%">Anggaran</th>
                             <th width="10%">Action</th>
                         </tr>
                     </thead>
@@ -61,6 +62,7 @@
                             <tr>
                                 <td>{{ $model->penyakit }}</td>
                                 <td>{{ $model->obat }}</td>
+                                <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
                                 <td>
                                     <a href="{{ url('kesehatan/pengobatan/edit/'.$model->id) }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>

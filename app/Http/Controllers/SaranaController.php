@@ -13,7 +13,7 @@ class SaranaController extends AdminController
 {
     public function __construct(Sarana $sarana, Timeline $timeline, LatarBelakang $latar, Evaluasi $evaluasi)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $sarana;
         $this->timeline = $timeline;
         $this->latar = $latar;
@@ -56,7 +56,7 @@ class SaranaController extends AdminController
             $evaluasi_id = $this->evaluasi->create($input_evaluasi);
 
             //sarana
-            $inputs = $request->only(['timeline_id','latar_belakang_id','evaluasi_id','tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_absensi','doc_evaluasi']);
+            $inputs = $request->only(['timeline_id','latar_belakang_id','evaluasi_id','tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_absensi','doc_evaluasi','tahun']);
             $inputs['timeline_id'] = $timeline_id->id;
             $inputs['latar_belakang_id'] = $latar_id->id;
             $inputs['evaluasi_id'] = $evaluasi_id->id;
@@ -125,7 +125,7 @@ class SaranaController extends AdminController
             $evaluasi->update($input_evaluasi);
 
             //sarana
-            $inputs = $request->only(['tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_evaluasi','doc_absensi']);
+            $inputs = $request->only(['tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_evaluasi','doc_absensi','tahun']);
             $inputs['doc_kerjasama'] = isset($input->doc_kerjasama) ? $this->upload_file($input,$this->model,$request,'doc_kerjasama','sarana/document'):$model->doc_kerjasama;
             $inputs['doc_anggaran'] = isset($input->doc_anggaran) ? $this->upload_file($input,$this->model,$request,'doc_anggaran','sarana/document'):$model->doc_anggaran;
             $inputs['doc_resiko']  = isset($input->doc_resiko) ? $this->upload_file($input,$this->model,$request,'doc_resiko','sarana/document'):$model->doc_resiko;

@@ -53,6 +53,9 @@
                         <tr>
                             <th width="10%">Tempat</th>
                             <th class="min-tablet">Latar Belakang Kegiatan</th>
+                            <th>Tahun</th>
+                            <th>Anggaran</th>
+                            <th width="10%"></th>
                             <th width="10%">Jenis Pengobatan</th>
                             <th width="15%">Action</th>
                         </tr>
@@ -60,9 +63,12 @@
                     <tbody>
                         @foreach($models as $model)
                         <?php $count_obat = $obat->where('kesehatan_id','=',$model->id)->count(); ?>
-                            <tr>
+                            <tr class="{{ $model->kode == '' ? 'danger':null }}">
                                 <td>{{ $model->tempat }}</td>
                                 <td>{{ $model->kerjasama }}</td>
+                                <td>{{ $model->tahun }}</td>
+                                <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
+                                <td><button id="{{ $model->id }}" type="button" class="btn btn-success btn-anggaran" data-toggle="modal" data-target="#modalAnggaran">Edit Anggaran</button></td>
                                 <td>
                                     <a href="{{ url('kesehatan/pengobatan/'.$model->id) }}" class="btn {{ $count_obat > 0 ? 'btn-success':'btn-primary'}} btn-primary">{{ $count_obat }} Data Pengobatan</a>
                                 </td>
@@ -83,6 +89,17 @@
 </div>
 <!--===================================================-->
 <!--END CONTENT CONTAINER-->
+<!-- Modal -->
+<div id="modalAnggaran" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form id="formAnggaran" method="post" action="kesehatan/anggaran">
+        @include('includes.anggaran-popup-false')
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
 @push('javascript')
 <script src="{{ url('admin') }}/plugins/bootbox/bootbox.min.js"></script>
@@ -105,5 +122,39 @@ $('.btn.btn-danger.btn-icon.icon-lg.fa.fa-trash').on('click', function(){
 
     });
 });
+
+var locale  = "{{ url('/') }}";
+$('.btn.btn-success.btn-anggaran').on('click', function(){
+    var id = $(this).attr('id');
+    $.ajax({
+        url: locale + '/kesehatan/get-anggaran/'+id,
+        success: function(result) {
+          $("#formAnggaran").html(result);
+          cekKode();
+        }
+    });
+});
+function cekKode(){
+  $("#kode").focusout(function() {
+    $.ajax({
+        url: locale + '/cek-kode/'+$(this).val(),
+        success: function(result) {
+          $("#title").val(result);
+          $("#submitAnggaran").removeAttr('disabled');
+        }
+    });
+  });
+  $("#kode").keypress(function(e) {
+      if(e.which == 13) {
+        $.ajax({
+            url: locale + '/cek-kode/'+$(this).val(),
+            success: function(result) {
+              $("#title").val(result);
+              $("#submitAnggaran").removeAttr('disabled');
+            }
+        });
+      }
+  });
+}
 </script>
 @endpush
