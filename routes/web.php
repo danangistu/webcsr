@@ -55,6 +55,8 @@ Route::post('bencana/pemberian', 'PemberianController@store');
 Route::get('bencana/pemberian/edit/{id}', 'PemberianController@edit');
 Route::post('bencana/pemberian/edit/{id}', 'PemberianController@update');
 Route::get('bencana/pemberian/delete/{id}', 'PemberianController@destroy');
+Route::post('bencana/anggaran', 'BencanaController@anggaran');
+Route::get('bencana/get-anggaran/{id}', 'BencanaController@getAnggaran');
 //Komunikasi Sosial
 Route::resource('komunikasi', 'KomunikasiController');
 Route::get('komunikasi/delete/{id}', 'KomunikasiController@destroy');

@@ -53,6 +53,7 @@
                         <tr>
                             <th>Description</th>
                             <th width="10%">Foto</th>
+                            <th width="30%">Anggaran</th>
                             <th width="15%">Action</th>
                         </tr>
                     </thead>
@@ -61,6 +62,7 @@
                             <tr>
                                 <td>{{ $model->description }}</td>
                                 <td><img src="{{ url('contents/bencana/foto/'.$model->foto) }}" height="100"></td>
+                                <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
                                 <td>
                                     <a href="{{ url('bencana/pemberian/edit/'.$model->id) }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>

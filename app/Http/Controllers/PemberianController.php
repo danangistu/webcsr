@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
 use App\Models\Bencana;
 use App\Models\BencanaPemberian;
-
+use DB;
 class PemberianController extends AdminController
 {
     public function __construct(Bencana $bencana, BencanaPemberian $pemberian)
@@ -31,10 +31,16 @@ class PemberianController extends AdminController
     public function store(Request $request){
         $inputs = $request->all();
         try{
+            DB::beginTransaction();
+            $anggaran = $this->bencana->findOrFail($inputs['bencana_id']);
+            $anggaran->anggaran = $anggaran->anggaran+$inputs['anggaran'];
+            $anggaran->save();
             $inputs['foto'] = $this->upload_file($inputs,$this->model,$request,'foto','bencana/foto');
             $this->model->create($inputs);
+            DB::commit();
             return redirect('bencana/pemberian/'.$inputs['bencana_id'])->with('success', 'Data berhasil ditambahkan.');
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('bencana/pemberian/'.$inputs['bencana_id'])->with('error', $e->getMessage());
         }
     }
@@ -47,12 +53,20 @@ class PemberianController extends AdminController
     }
     public function update(Request $request,$id){
         $inputs = $request->all();
+        $model = $this->model->findOrFail($id);
         try{
+            DB::beginTransaction();
+            $anggaran = $this->bencana->findOrFail($inputs['bencana_id']);
+            $anggaran->anggaran = $anggaran->anggaran-$model->anggaran;
+            $anggaran->anggaran = $anggaran->anggaran+$inputs['anggaran'];
+            $anggaran->save();
             if(isset($inputs['foto']))
                 $inputs['foto'] = $this->upload_file($inputs,$this->model,$request,'foto','bencana/foto');
-            $this->model->findOrFail($id)->update($inputs);
+            $model->update($inputs);
+            DB::commit();
             return redirect('bencana/pemberian/'.$inputs['bencana_id'])->with('success', 'Data berhasil diedit.');
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('bencana/pemberian/'.$inputs['bencana_id'])->with('error', $e->getMessage());
         }
     }
@@ -60,10 +74,15 @@ class PemberianController extends AdminController
     {
         $model = $this->model->findOrFail($id);
         try{
+            DB::beginTransaction();
+            $anggaran = $this->bencana->findOrFail($model->bencana_id);
+            $anggaran->anggaran = $anggaran->anggaran-$model->anggaran;
+            $anggaran->save();
             $model->delete();
+            DB::commit();
             return redirect('bencana/pemberian/'.$model['bencana_id'])->with('success', 'Data berhasil dihapus.');
-
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('bencana/pemberian/'.$model['bencana_id'])->with('error', $e->getMessage());
         }
     }
