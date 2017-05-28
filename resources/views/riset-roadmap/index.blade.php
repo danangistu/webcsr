@@ -30,7 +30,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="{{ url('riset') }}">Riset dan Pengembangan</a></li>
+        <li><a href="{{ url('riset') }}">Pelayanan Bantuan Riset & Pengembangan </a></li>
         <li class="active">Roadmap</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -41,7 +41,7 @@
     <div id="page-content">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Tabel Roadmap Bantuan Pengembangan dan riset Usaha </h3>
+                <h3 class="panel-title">Tabel Roadmap Riset & Pengembangan </h3>
             </div>
             <div class="panel-body">
                 <a href="{{ url('riset/roadmap/create/'.$riset_id) }}" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah Data</a>
@@ -54,6 +54,7 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th width="10%">Foto</th>
+                            <th width="30%">Anggaran</th>
                             <th width="15%">Action</th>
                         </tr>
                     </thead>
@@ -63,6 +64,7 @@
                                 <td>{{ $model->title }}</td>
                                 <td>{{ $model->description }}</td>
                                 <td><img src="{{ url('contents/riset/foto/'.$model->foto) }}" height="100"></td>
+                                <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
                                 <td>
                                     <a href="{{ url('riset/roadmap/edit/'.$model->id) }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>
