@@ -56,7 +56,7 @@ class HariBesarController extends AdminController
             $evaluasi_id = $this->evaluasi->create($input_evaluasi);
 
             //hari-besar
-            $inputs = $request->only(['timeline_id','latar_belakang_id','evaluasi_id','tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_evaluasi']);
+            $inputs = $request->only(['timeline_id','latar_belakang_id','evaluasi_id','tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_evaluasi','tahun']);
             $inputs['timeline_id'] = $timeline_id->id;
             $inputs['latar_belakang_id'] = $latar_id->id;
             $inputs['evaluasi_id'] = $evaluasi_id->id;
@@ -124,7 +124,7 @@ class HariBesarController extends AdminController
             $evaluasi->update($input_evaluasi);
 
             //hari-besar
-            $inputs = $request->only(['tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_evaluasi']);
+            $inputs = $request->only(['tempat','kerjasama','doc_kerjasama','doc_anggaran','doc_resiko','doc_tor','doc_laporan','doc_evaluasi','tahun']);
             $inputs['doc_kerjasama'] = isset($input->doc_kerjasama) ? $this->upload_file($input,$this->model,$request,'doc_kerjasama','hari-besar/document'):$model->doc_kerjasama;
             $inputs['doc_anggaran'] = isset($input->doc_anggaran) ? $this->upload_file($input,$this->model,$request,'doc_anggaran','hari-besar/document'):$model->doc_anggaran;
             $inputs['doc_resiko']  = isset($input->doc_resiko) ? $this->upload_file($input,$this->model,$request,'doc_resiko','hari-besar/document'):$model->doc_resiko;
@@ -158,5 +158,35 @@ class HariBesarController extends AdminController
             DB::rollBack();
             return redirect('hari-besar')->with('error', $e->getMessage());
         }
+    }
+
+    public function anggaran(Request $request)
+    {
+      $inputs = $request->all();
+      try{
+        $model = $this->model->findOrFail($inputs['masterId']);
+        $input = $request->only(['kode','anggaran']);
+        $model->update($input);
+        return redirect('hari-besar')->with('success', 'Data berhasil diubah.');
+      }catch(\Exception $e){
+        return redirect('hari-besar')->with('error', $e->getMessage());
+      }
+    }
+    public function getAnggaran($id)
+    {
+      try{
+        $model = $this->model->select('hari_besars.id','hari_besars.kode','hari_besars.anggaran','kodes.title')
+          ->join('kodes','kodes.kode','=','hari_besars.kode')
+          ->where('hari_besars.id',$id)->firstOrFail();
+        return view('includes.anggaran-popup',[
+            'model'=> $model
+        ]);
+      }
+      catch(\Exception $e){
+        $model = $this->model->findOrFail($id);
+        return view('includes.anggaran-popup',[
+            'model'=> $model
+        ]);
+      }
     }
 }

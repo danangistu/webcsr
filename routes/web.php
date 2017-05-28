@@ -60,12 +60,18 @@ Route::get('bencana/get-anggaran/{id}', 'BencanaController@getAnggaran');
 //Komunikasi Sosial
 Route::resource('komunikasi', 'KomunikasiController');
 Route::get('komunikasi/delete/{id}', 'KomunikasiController@destroy');
+Route::post('komunikasi/anggaran', 'KomunikasiController@anggaran');
+Route::get('komunikasi/get-anggaran/{id}', 'KomunikasiController@getAnggaran');
 //Partisipasi Hari Besar
 Route::resource('hari-besar', 'HariBesarController');
 Route::get('hari-besar/delete/{id}', 'HariBesarController@destroy');
+Route::post('hari-besar/anggaran', 'HariBesarController@anggaran');
+Route::get('hari-besar/get-anggaran/{id}', 'HariBesarController@getAnggaran');
 //Partisipasi Kegiatan Masyarakat
 Route::resource('kegiatan-masyarakat', 'KegiatanController');
 Route::get('kegiatan-masyarakat/delete/{id}', 'KegiatanController@destroy');
+Route::post('kegiatan-masyarakat/anggaran', 'KegiatanController@anggaran');
+Route::get('kegiatan-masyarakat/get-anggaran/{id}', 'KegiatanController@getAnggaran');
 //Pelayanan Bantuan Modal
 Route::resource('modal', 'ModalController');
 Route::get('modal/delete/{id}', 'ModalController@destroy');
