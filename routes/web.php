@@ -81,12 +81,18 @@ Route::post('modal/roadmap', 'RoadmapController@store');
 Route::get('modal/roadmap/edit/{id}', 'RoadmapController@edit');
 Route::post('modal/roadmap/edit/{id}', 'RoadmapController@update');
 Route::get('modal/roadmap/delete/{id}', 'RoadmapController@destroy');
+Route::post('modal/anggaran', 'ModalController@anggaran');
+Route::get('modal/get-anggaran/{id}', 'ModalController@getAnggaran');
 //Pelayanan Ketrampilan
 Route::resource('ketrampilan', 'KetrampilanController');
 Route::get('ketrampilan/delete/{id}', 'KetrampilanController@destroy');
+Route::post('ketrampilan/anggaran', 'KetrampilanController@anggaran');
+Route::get('ketrampilan/get-anggaran/{id}', 'KetrampilanController@getAnggaran');
 //Pelayanan Pemasaran
 Route::resource('pemasaran', 'PemasaranController');
 Route::get('pemasaran/delete/{id}', 'PemasaranController@destroy');
+Route::post('pemasaran/anggaran', 'PemasaranController@anggaran');
+Route::get('pemasaran/get-anggaran/{id}', 'PemasaranController@getAnggaran');
 //Pelayanan Bantuan Modal
 Route::resource('riset', 'RisetController');
 Route::get('riset/delete/{id}', 'RisetController@destroy');

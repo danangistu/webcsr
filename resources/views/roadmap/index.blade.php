@@ -54,6 +54,7 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th width="10%">Foto</th>
+                            <th width="30%">Anggaran</th>
                             <th width="15%">Action</th>
                         </tr>
                     </thead>
@@ -63,6 +64,7 @@
                                 <td>{{ $model->title }}</td>
                                 <td>{{ $model->description }}</td>
                                 <td><img src="{{ url('contents/modal/foto/'.$model->foto) }}" height="100"></td>
+                                <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
                                 <td>
                                     <a href="{{ url('modal/roadmap/edit/'.$model->id) }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>
                                     <button id="{{ $model->id }}" class="btn btn-danger btn-icon icon-lg fa fa-trash"></button>

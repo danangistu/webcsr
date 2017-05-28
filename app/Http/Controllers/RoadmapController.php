@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AdminController;
 use App\Models\Modal;
 use App\Models\ModalRoadmap;
-
+use DB;
 class RoadmapController extends AdminController
 {
     public function __construct(Modal $modal, ModalRoadmap $roadmap)
@@ -31,10 +31,16 @@ class RoadmapController extends AdminController
     public function store(Request $request){
         $inputs = $request->all();
         try{
+            DB::beginTransaction();
+            $anggaran = $this->modal->findOrFail($inputs['modal_id']);
+            $anggaran->anggaran = $anggaran->anggaran+$inputs['anggaran'];
+            $anggaran->save();
             $inputs['foto'] = $this->upload_file($inputs,$this->model,$request,'foto','modal/foto');
             $this->model->create($inputs);
+            DB::commit();
             return redirect('modal/roadmap/'.$inputs['modal_id'])->with('success', 'Data berhasil ditambahkan.');
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('modal/roadmap/'.$inputs['modal_id'])->with('error', $e->getMessage());
         }
     }
@@ -47,12 +53,20 @@ class RoadmapController extends AdminController
     }
     public function update(Request $request,$id){
         $inputs = $request->all();
+        $model = $this->model->findOrFail($id);
         try{
+            DB::beginTransaction();
+            $anggaran = $this->modal->findOrFail($inputs['modal_id']);
+            $anggaran->anggaran = $anggaran->anggaran-$model->anggaran;
+            $anggaran->anggaran = $anggaran->anggaran+$inputs['anggaran'];
+            $anggaran->save();
             if(isset($inputs['foto']))
                 $inputs['foto'] = $this->upload_file($inputs,$this->model,$request,'foto','modal/foto');
-            $this->model->findOrFail($id)->update($inputs);
+            $model->update($inputs);
+            DB::commit();
             return redirect('modal/roadmap/'.$inputs['modal_id'])->with('success', 'Data berhasil diedit.');
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('modal/roadmap/'.$inputs['modal_id'])->with('error', $e->getMessage());
         }
     }
@@ -60,10 +74,15 @@ class RoadmapController extends AdminController
     {
         $model = $this->model->findOrFail($id);
         try{
+            DB::beginTransaction();
+            $anggaran = $this->modal->findOrFail($model->modal_id);
+            $anggaran->anggaran = $anggaran->anggaran-$model->anggaran;
+            $anggaran->save();
             $model->delete();
+            DB::commit();
             return redirect('modal/roadmap/'.$model['modal_id'])->with('success', 'Data berhasil dihapus.');
-
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect('modal/roadmap/'.$model['modal_id'])->with('error', $e->getMessage());
         }
     }
