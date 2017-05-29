@@ -114,6 +114,8 @@ Route::get('quick-win/delete/{id}', 'QuickController@destroy');
 Route::resource('kode-pendanaan', 'KodeController');
 Route::get('kode-pendanaan/delete/{id}', 'KodeController@destroy');
 Route::get('cek-kode/{kode}', 'KodeController@cekCode');
+//Laporan
+Route::get('laporan-pendanaan', 'LaporanController@index');
 
 //Setting
 Route::get('setting', 'SettingController@index');

@@ -9,7 +9,7 @@ class KodeController extends AdminController
 {
     public function __construct(Kode $model)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $model;
         $this->view = 'kode.';
     }
