@@ -59,7 +59,7 @@
                         <?php $i = 1 ?>
                         @foreach($models as $model)
                             <tr>
-                                <td>{{ 'Quick Win'.$i }}</td>
+                                <td>{{ 'Quick Win '.date('Y') }}</td>
                                 <td>{{ $model->created_at }}</td>
                                 <td>
                                     <a href="{{ url('quick-win/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
