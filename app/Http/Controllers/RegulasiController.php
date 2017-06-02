@@ -9,7 +9,7 @@ class RegulasiController extends AdminController
 {
     public function __construct(Regulasi $model)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $model;
         $this->view = 'regulasi.';
     }

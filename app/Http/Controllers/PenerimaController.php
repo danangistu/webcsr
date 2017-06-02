@@ -11,7 +11,7 @@ class PenerimaController extends AdminController
 {
     public function __construct(Pendidikan $pendidikan, PendidikanPenerima $penerima)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $penerima;
         $this->pendidikan = $pendidikan;
         $this->view = 'penerima.';

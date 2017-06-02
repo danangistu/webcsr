@@ -14,7 +14,7 @@ class modalController extends AdminController
 {
     public function __construct(Modal $modal, Timeline $timeline, LatarBelakang $latar, Evaluasi $evaluasi)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $modal;
         $this->timeline = $timeline;
         $this->latar = $latar;

@@ -107,7 +107,7 @@ Route::get('riset/get-anggaran/{id}', 'RisetController@getAnggaran');
 //Regulasi
 Route::resource('regulasi', 'RegulasiController');
 Route::get('regulasi/delete/{id}', 'RegulasiController@destroy');
-//Regulasi
+//Quick win
 Route::resource('quick-win', 'QuickController');
 Route::get('quick-win/delete/{id}', 'QuickController@destroy');
 //Kode
@@ -120,3 +120,14 @@ Route::get('laporan-pendanaan', 'LaporanController@index');
 //Setting
 Route::get('setting', 'SettingController@index');
 Route::post('setting', 'SettingController@store');
+//Profile
+Route::get('profile', 'ProfileController@index');
+Route::post('profile', 'ProfileController@store');
+//Privilege
+Route::resource('privilege', 'PrivilegeController');
+Route::get('privilege/delete/{id}', 'PrivilegeController@destroy');
+Route::get('privilege/role/{id}', 'PrivilegeController@role');
+Route::post('privilege/role', 'PrivilegeController@roleSubmit');
+//User
+Route::resource('users', 'UserController');
+Route::get('users/delete/{id}', 'UserController@destroy');

@@ -11,7 +11,7 @@ class RoadmapController extends AdminController
 {
     public function __construct(Modal $modal, ModalRoadmap $roadmap)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $roadmap;
         $this->modal = $modal;
         $this->view = 'roadmap.';

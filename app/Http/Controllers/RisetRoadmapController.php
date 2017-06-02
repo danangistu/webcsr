@@ -12,7 +12,7 @@ class RisetRoadmapController extends AdminController
 {
     public function __construct(Riset $riset, RisetRoadmap $roadmap)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $roadmap;
         $this->riset = $riset;
         $this->view = 'riset-roadmap.';

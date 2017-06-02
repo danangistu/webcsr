@@ -12,11 +12,13 @@
                         <i class="fa fa-user"></i>
                     </a>
                 </li>
+                @if($role->setting == 1)
                 <li class="col-xs-4" data-content="Settings">
                     <a id="demo-alert" class="shortcut-grid" href="{{ url('setting') }}">
                         <i class="fa fa-cog"></i>
                     </a>
                 </li>
+                @endif
                 <li class="col-xs-4" data-content="Notifications">
                     <a id="demo-page-alert" class="shortcut-grid" href="#">
                         <i class="fa fa-bell"></i>
@@ -48,6 +50,8 @@
                                 </span>
                             </a>
                         </li>
+
+                        @if($role->pelayanan == 1)
                         <li class="{{
                             request()->segment(1) == ('sarana') ||
                             request()->segment(1) == ('kesehatan') ||
@@ -76,7 +80,8 @@
                                 <li class="{{ request()->segment(1) == ('bencana') ? 'active-link' : null }}"><a href="{{ url('bencana') }}">Bencana Alam</a></li>
                             </ul>
                         </li>
-
+                        @endif
+                        @if($role->pembinaan == 1)
                         <li class="{{
                             request()->segment(1) == ('komunikasi') ||
                             request()->segment(1) == ('hari-besar') ||
@@ -101,7 +106,8 @@
                                 <li class="{{ request()->segment(1) == ('kegiatan-masyarakat') ? 'active-link' : null }}"><a href="{{ url('kegiatan-masyarakat') }}">Partisipasi Kegiatan Masyarakat</a></li>
                             </ul>
                         </li>
-
+                        @endif
+                        @if($role->pemberdayaan == 1)
                         <li class="{{
                             request()->segment(1) == ('modal') ||
                             request()->segment(1) == ('ketrampilan') ||
@@ -129,7 +135,8 @@
                                 <li class="{{ request()->segment(1) == ('riset') ? 'active-link' : null }}"><a href="{{ url('riset') }}">Riset & Pengembangan</a></li>
                             </ul>
                         </li>
-
+                        @endif
+                        @if($role->regulasi == 1)
                         <li class="{{ request()->segment(1) == 'regulasi' ? 'active-link' : null }}">
                             <a href="{{ url('regulasi') }}">
                                 <i class="fa fa-clipboard"></i>
@@ -139,7 +146,8 @@
                                 </span>
                             </a>
                         </li>
-
+                        @endif
+                        @if($role->quick == 1)
                         <li class="{{ request()->segment(1) == 'quick-win' ? 'active-link' : null }}">
                             <a href="{{ url('quick-win') }}">
                                 <i class="fa fa-external-link"></i>
@@ -149,7 +157,8 @@
                                 </span>
                             </a>
                         </li>
-
+                        @endif
+                        @if($role->pendanaan == 1)
                         <li class="{{
                             request()->segment(1) == ('kode-pendanaan') ||
                             request()->segment(1) == ('laporan-pendanaan')
@@ -167,8 +176,13 @@
                                 <li class="{{ request()->segment(1) == ('jenis-pendanaan') ? 'active-link' : null }}"><a href="{{ url('laporan-pendanaan') }}">Laporan Jenis Pendanaan</a></li>
                             </ul>
                         </li>
-
-                        <li class="">
+                        @endif
+                        @if($role->privilege == 1)
+                        <li class="{{
+                            request()->segment(1) == ('privilege') ||
+                            request()->segment(1) == ('users')
+                            ? 'active-link' : null
+                        }}">
                             <a href="">
                                 <i class="fa fa-users"></i>
                                 <span class="menu-title">
@@ -176,23 +190,28 @@
                                 </span>
                             </a>
                             <!--Submenu-->
-                            <ul class="collapse">
-                                <li class=""><a href="#">Privileges</a></li>
-                                <li class=""><a href="#">Users</a></li>
+                            <ul class="collapse {{
+                                request()->segment(1) == ('privilege') ||
+                                request()->segment(1) == ('users')
+                                ? 'in' : null
+                            }}">
+                                <li class="{{ request()->segment(1) == ('privilege') ? 'active-link' : null }}"><a href="{{ url('privilege') }}">Privileges</a></li>
+                                <li class="{{ request()->segment(1) == ('users') ? 'active-link' : null }}"><a href="{{ url('users') }}">Users</a></li>
                             </ul>
                         </li>
-
-                        <li class="">
+                        <!-- <li class="">
                             <a href="">
                                 <i class="fa fa-history"></i>
                                 <span class="menu-title">
                                     <strong>Logs</strong>
                                 </span>
                             </a>
-                        </li>
-
+                        </li> -->
+                        @endif
+                        @if($role->setting == 1)
                         <li class="{{
-                            request()->segment(1) == ('setting')
+                            request()->segment(1) == ('setting') ||
+                            request()->segment(1) == ('profile')
                             ? 'active-link' : null
                         }}">
                             <a href="">
@@ -203,14 +222,15 @@
                             </a>
                             <!--Submenu-->
                             <ul class="collapse {{
-                                request()->segment(1) == ('setting')
+                                request()->segment(1) == ('setting') ||
+                                request()->segment(1) == ('profile')
                                 ? 'in' : null
                             }}">
                                 <li class="{{ request()->segment(1) == ('setting') ? 'active-link' : null }}"><a href="{{ url('setting') }}">System Setting</a></li>
-                                <li class=""><a href="#">Profile</a></li>
+                                <li class="{{ request()->segment(1) == ('profile') ? 'active-link' : null }}"><a href="{{ url('profile') }}">Profile</a></li>
                             </ul>
                         </li>
-
+                        @endif
                 </div>
             </div>
         </div>

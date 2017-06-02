@@ -42,9 +42,9 @@
                 <li id="dropdown-user" class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                         <span class="pull-right">
-                            <img class="img-circle img-user media-object" src="{{ asset('admin') }}/img/av1.png" alt="Profile Picture">
+                            <img class="img-circle img-user media-object" src="{{ asset('contents/'.auth()->user()->image) }}" alt="Profile Picture">
                         </span>
-                        <div class="username hidden-xs">Superadmin</div>
+                        <div class="username hidden-xs">{{ auth()->user()->name }}</div>
                     </a>
 
 
@@ -57,12 +57,14 @@
                                     <i class="fa fa-user fa-fw fa-lg"></i> Profile
                                 </a>
                             </li>
+                            @if($role->setting == 1)
                             <li>
                                 <a href="{{ url('setting') }}">
                                     <!-- <span class="label label-success pull-right">New</span> -->
                                     <i class="fa fa-gear fa-fw fa-lg"></i> Settings
                                 </a>
                             </li>
+                            @endif
                         </ul>
 
                         <!-- Dropdown footer -->

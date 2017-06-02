@@ -11,7 +11,7 @@ class PemberianController extends AdminController
 {
     public function __construct(Bencana $bencana, BencanaPemberian $pemberian)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $pemberian;
         $this->bencana = $bencana;
         $this->view = 'pemberian.';

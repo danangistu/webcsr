@@ -7,7 +7,9 @@
 <link href="{{ url('admin') }}/css/bootstrap.min.css" rel="stylesheet">
 <!--Nifty Stylesheet [ REQUIRED ]-->
 <link href="{{ url('admin') }}/css/nifty.min.css" rel="stylesheet">
-<!-- <link href="css/themes/theme-light.min.css" rel="stylesheet"> -->
+@if($privilege->theme !== 'theme-dark')
+  <link href="{{ url('admin') }}/css/themes/{{ $privilege->theme }}.min.css" rel="stylesheet">
+@endif
 <!--Font Awesome [ OPTIONAL ]-->
 <link href="{{ url('admin') }}/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <!--Animate.css [ OPTIONAL ]-->

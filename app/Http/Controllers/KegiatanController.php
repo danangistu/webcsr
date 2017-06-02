@@ -13,7 +13,7 @@ class KegiatanController extends AdminController
 {
     public function __construct(Kegiatan $model, Timeline $timeline, LatarBelakang $latar, Evaluasi $evaluasi)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $model;
         $this->timeline = $timeline;
         $this->latar = $latar;

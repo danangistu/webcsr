@@ -14,7 +14,7 @@ class RisetController extends AdminController
 {
     public function __construct(Riset $riset, Timeline $timeline, LatarBelakang $latar, Evaluasi $evaluasi)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $riset;
         $this->timeline = $timeline;
         $this->latar = $latar;

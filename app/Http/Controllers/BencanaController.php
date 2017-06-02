@@ -14,7 +14,7 @@ class BencanaController extends AdminController
 {
     public function __construct(Bencana $bencana, Timeline $timeline, LatarBelakang $latar, Evaluasi $evaluasi)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $bencana;
         $this->timeline = $timeline;
         $this->latar = $latar;

@@ -1,6 +1,3 @@
-<?php
-	$setting = App\Models\Setting::firstOrFail();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ $setting->meta_title }} | @yield('title')</title>
 	<link rel='shortcut icon' type='image/x-icon' href="{{ asset('contents/'.$setting->favicon) }}" />
-
-    @include('includes.style')
+	@php
+		$privilege = $privilege->where('id',auth()->user()->privilege_id)->firstOrFail();
+		$role = $role->where('privilege_id',$privilege->id)->firstOrFail()
+	@endphp
+  @include('includes.style')
 	@include('includes.script')
 
 </head>

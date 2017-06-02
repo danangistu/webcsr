@@ -13,7 +13,7 @@ class KomunikasiController extends AdminController
 {
     public function __construct(Komunikasi $komunikasi, Timeline $timeline, LatarBelakang $latar, Evaluasi $evaluasi)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $komunikasi;
         $this->timeline = $timeline;
         $this->latar = $latar;

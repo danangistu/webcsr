@@ -10,7 +10,7 @@ class SettingController extends AdminController
 {
     public function __construct(Setting $model)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $model;
         $this->view = 'setting.form';
     }

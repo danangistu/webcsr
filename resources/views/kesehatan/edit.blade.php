@@ -18,7 +18,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Tambah Data Pelayanan Kesehatan</h1>
+        <h1 class="page-header text-overflow">Edit Data Pelayanan Kesehatan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->

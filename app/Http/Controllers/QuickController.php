@@ -9,7 +9,7 @@ class QuickController extends AdminController
 {
     public function __construct(Quick $model)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->model = $model;
         $this->view = 'quick.';
     }
