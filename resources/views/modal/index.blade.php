@@ -94,7 +94,6 @@
     <!-- Modal content-->
     <div class="modal-content">
       <form id="formAnggaran" method="post" action="modal/anggaran">
-        @include('includes.anggaran-popup-false')
       </form>
     </div>
   </div>
