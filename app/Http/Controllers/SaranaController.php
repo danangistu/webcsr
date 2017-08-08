@@ -192,4 +192,14 @@ class SaranaController extends AdminController
         ]);
       }
     }
+    public function getLaporan($id)
+    {
+        $model = $this->model->findOrFail($id);
+        return view($this->view.'laporan',[
+            'model'=> $model,
+            'timeline'=>$this->timeline->where('id','=',$model->timeline_id)->firstOrFail(),
+            'latar'=>$this->latar->where('id','=',$model->latar_belakang_id)->firstOrFail(),
+            'evaluasi'=>$this->evaluasi->where('id','=',$model->evaluasi_id)->firstOrFail(),
+        ]);
+    }
 }

@@ -23,6 +23,7 @@ Route::resource('sarana', 'SaranaController');
 Route::get('sarana/delete/{id}', 'SaranaController@destroy');
 Route::post('sarana/anggaran', 'SaranaController@anggaran');
 Route::get('sarana/get-anggaran/{id}', 'SaranaController@getAnggaran');
+Route::get('sarana/laporan/{id}', 'SaranaController@getLaporan');
 //Pelayanan Kesehatan
 Route::resource('kesehatan', 'KesehatanController');
 Route::get('kesehatan/delete/{id}', 'KesehatanController@destroy');
