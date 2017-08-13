@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Pengajuan Laporan @endsection
+@section('title')Laporan Masuk @endsection
 @push('style')
 <!--Bootstrap Table [ OPTIONAL ]-->
 <link href="{{ url('admin') }}/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Pengajuan Laporan</h1>
+        <h1 class="page-header text-overflow">Laporan Masuk</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -30,7 +30,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li class="active"> Pengajuan Laporan</li>
+        <li class="active">Laporan Pendanaan</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -40,7 +40,7 @@
     <div id="page-content">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Tabel Pengajuan Laporan </h3>
+                <h3 class="panel-title">Tabel Laporan Masuk </h3>
             </div>
 
             <div class="panel-body">
@@ -49,11 +49,10 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>User</th>
                             <th>Judul Laporan</th>
                             <th>Tanggal Pengajuan</th>
                             <th>Laporan</th>
-                            <th>Approval SPS</th>
-                            <th>Approval GM</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -62,28 +61,14 @@
                         @foreach($models as $model)
                             <tr>
                                 <td>{{ $i }}</td>
+                                <td>{{ $model->name }}</td>
                                 <td>{{ $model->judul_laporan }}</td>
                                 <td>{{ date("d F Y", strtotime($model->created_at)) }}</td>
-                                <td><a href="{{ url($model->type.'/laporan/'.$model->csr_id) }}" class="btn btn-primary btn-block"> Laporan</a></td>
-                                @if($model->approval_sps == 'pending')
-                                  <td><a class="btn btn-info btn-block"> Pending</a></td>
-                                @elseif($model->approval_sps == 'revisi')
-                                  <td><a href="{{ url('pengajuan-laporan/revisi/'.$model->id) }}" class="btn btn-warning btn-block"> Revisi</a></td>
-                                @else
-                                  <td><a class="btn btn-success btn-block"> Approve</a></td>
-                                @endif
-                                @if($model->approval_gm == 'pending')
-                                  <td><a class="btn btn-info btn-block"> Pending</a></td>
-                                @elseif($model->approval_gm == 'revisi')
-                                  <td><a href="{{ url('pengajuan-laporan/revisi/'.$model->id) }}" class="btn btn-warning btn-block"> Revisi</a></td>
-                                @else
-                                  <td><a class="btn btn-success btn-block btn-block"> Approve</a></td>
-                                @endif
-                                @if($model->approval_sps == 'approve' && $model->approval_gm == 'approve')
-                                  <td><a class="btn btn-primary btn-block"> Print</a></td>
-                                @else
-                                  <td> Tidak ada action</td>
-                                @endif
+                                <td><a href="{{ url($model->type.'/laporan/'.$model->csr_id) }}" class="btn btn-primary btn-block"><span class="fa fa-clipboard"></span>  Laporan</a></td>
+                                <td>
+                                  <a href="{{ url('laporan-masuk-gm/approve/'.$model->id) }}" class="btn btn-success btn-block"><span class="fa fa-check"></span> Approve</a>
+                                  <a href="{{ url('laporan-masuk-gm/revisi/'.$model->id) }}" class="btn btn-warning btn-block"><span class="fa fa-edit"></span> Revisi</a>
+                                </td>
                             </tr>
                             @php($i++)
                         @endforeach

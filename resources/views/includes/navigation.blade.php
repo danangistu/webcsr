@@ -177,6 +177,7 @@
                             </ul>
                         </li>
                         @endif
+                        @if($role->pengajuan == 1)
                         <li class="{{
                             request()->segment(1) == ('laporan-setting') ||
                             request()->segment(1) == ('pengajuan-laporan')
@@ -189,11 +190,36 @@
                                 </span>
                             </a>
                             <!--Submenu-->
-                            <ul class="collapse">
+                            <ul class="collapse {{
+                                request()->segment(1) == ('laporan-setting') ||
+                                request()->segment(1) == ('pengajuan-laporan')
+                                ? 'in' : null
+                            }}">
                                 <li class="{{ request()->segment(1) == ('laporan-setting') ? 'active-link' : null }}"><a href="{{ url('laporan-setting') }}">Laporan Setting</a></li>
                                 <li class="{{ request()->segment(1) == ('pengajuan-laporan') ? 'active-link' : null }}"><a href="{{ url('pengajuan-laporan') }}">Pengajuan Laporan</a></li>
                             </ul>
                         </li>
+                        @endif
+                        @if($role->sps == 1)
+                        <li class="{{ request()->segment(1) == 'laporan-masuk-sps' ? 'active-link' : null }}">
+                            <a href="{{ url('laporan-masuk-sps') }}">
+                                <i class="fa fa-clipboard"></i>
+                                <span class="menu-title">
+                                    <strong>Laporan Masuk (SPS)</strong>
+                                </span>
+                            </a>
+                        </li>
+                        @endif
+                        @if($role->gm == 1)
+                        <li class="{{ request()->segment(1) == 'laporan-masuk-gm' ? 'active-link' : null }}">
+                            <a href="{{ url('laporan-masuk-gm') }}">
+                                <i class="fa fa-clipboard"></i>
+                                <span class="menu-title">
+                                    <strong>Laporan Masuk (GM)</strong>
+                                </span>
+                            </a>
+                        </li>
+                        @endif
                         @if($role->privilege == 1)
                         <li class="{{
                             request()->segment(1) == ('privilege') ||

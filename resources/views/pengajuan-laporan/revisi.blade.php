@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title')Pengajuan Laporan @endsection
+@section('title')Revisi Laporan @endsection
 @push('style')
 <!--Bootstrap Table [ OPTIONAL ]-->
 <link href="{{ url('admin') }}/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">Pengajuan Laporan</h1>
+        <h1 class="page-header text-overflow">Revisi Laporan</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -30,7 +30,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li class="active"> Pengajuan Laporan</li>
+        <li class="active">Revisi Laporan</li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -40,7 +40,7 @@
     <div id="page-content">
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Tabel Pengajuan Laporan </h3>
+                <h3 class="panel-title">Tabel Revisi Laporan </h3>
             </div>
 
             <div class="panel-body">
@@ -48,13 +48,10 @@
                 <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Judul Laporan</th>
-                            <th>Tanggal Pengajuan</th>
-                            <th>Laporan</th>
-                            <th>Approval SPS</th>
-                            <th>Approval GM</th>
-                            <th>Action</th>
+                            <th width="5%">No</th>
+                            <th>Tanggal Revisi</th>
+                            <th width="60%">Catatan</th>
+                            <th width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,27 +59,13 @@
                         @foreach($models as $model)
                             <tr>
                                 <td>{{ $i }}</td>
-                                <td>{{ $model->judul_laporan }}</td>
                                 <td>{{ date("d F Y", strtotime($model->created_at)) }}</td>
-                                <td><a href="{{ url($model->type.'/laporan/'.$model->csr_id) }}" class="btn btn-primary btn-block"> Laporan</a></td>
-                                @if($model->approval_sps == 'pending')
-                                  <td><a class="btn btn-info btn-block"> Pending</a></td>
-                                @elseif($model->approval_sps == 'revisi')
-                                  <td><a href="{{ url('pengajuan-laporan/revisi/'.$model->id) }}" class="btn btn-warning btn-block"> Revisi</a></td>
+                                <td>{{ $model->revisi }}</td>
+                                @if($model->status == 'not_fixed')
+                                  <td><a href="{{ url('pengajuan-laporan/revisi/fix/'.$model->id) }}" class="btn btn-primary btn-block"><span class="fa fa-upload"></span> Ajukan Revisi</a></td>
                                 @else
-                                  <td><a class="btn btn-success btn-block"> Approve</a></td>
-                                @endif
-                                @if($model->approval_gm == 'pending')
-                                  <td><a class="btn btn-info btn-block"> Pending</a></td>
-                                @elseif($model->approval_gm == 'revisi')
-                                  <td><a href="{{ url('pengajuan-laporan/revisi/'.$model->id) }}" class="btn btn-warning btn-block"> Revisi</a></td>
-                                @else
-                                  <td><a class="btn btn-success btn-block btn-block"> Approve</a></td>
-                                @endif
-                                @if($model->approval_sps == 'approve' && $model->approval_gm == 'approve')
-                                  <td><a class="btn btn-primary btn-block"> Print</a></td>
-                                @else
-                                  <td> Tidak ada action</td>
+                                  <td><a class="btn btn-success btn-block"><span class="fa fa-check"></span> Fixed</a></td>
+
                                 @endif
                             </tr>
                             @php($i++)

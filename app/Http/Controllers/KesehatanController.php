@@ -8,6 +8,8 @@ use App\Models\KesehatanPengobatan;
 use App\Models\Timeline;
 use App\Models\LatarBelakang;
 use App\Models\Evaluasi;
+use App\Models\LaporanSetting;
+use App\Models\PengajuanLaporan;
 use DB;
 
 class KesehatanController extends AdminController
@@ -193,6 +195,29 @@ class KesehatanController extends AdminController
         return view('includes.anggaran-popup-false',[
             'model'=> $model
         ]);
+      }
+    }
+    public function getLaporan($id)
+    {
+        $model  = $this->model->findOrFail($id);
+        $lapset = LaporanSetting::firstOrFail();
+        return view($this->view.'laporan',[
+            'model'=> $model,
+            'timeline'=>$this->timeline->where('id','=',$model->timeline_id)->firstOrFail(),
+            'latar'=>$this->latar->where('id','=',$model->latar_belakang_id)->firstOrFail(),
+            'evaluasi'=>$this->evaluasi->where('id','=',$model->evaluasi_id)->firstOrFail(),
+            'lapset'=>$lapset,
+        ]);
+    }
+    public function postLaporan(Request $request)
+    {
+      $inputs = $request->all();
+      $model  = new PengajuanLaporan;
+      try{
+          $model->create($inputs);
+          return redirect('pengajuan-laporan')->with('success', 'Data berhasil ditambahkan.');
+      }catch(\Exception $e){
+          return redirect('pengajuan-laporan')->with('error', $e->getMessage());
       }
     }
 }

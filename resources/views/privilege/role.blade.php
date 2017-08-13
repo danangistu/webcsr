@@ -88,6 +88,27 @@
                                       </select>
                                   </div>
                                   <div class="form-group">
+                                      <label class="control-label">Pengajuan Laporan</label>
+                                      <select name="pengajuan" class="form-control">
+                                        <option value="1" {{ $model->pengajuan == '1' ? 'selected="selected"':null }}>Active</option>
+                                        <option value="0" {{ $model->pengajuan == '0' ? 'selected="selected"':null }}>Non Active</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="control-label">Laporan SPS</label>
+                                      <select name="sps" class="form-control">
+                                        <option value="1" {{ $model->sps == '1' ? 'selected="selected"':null }}>Active</option>
+                                        <option value="0" {{ $model->sps == '0' ? 'selected="selected"':null }}>Non Active</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="control-label">Laporan GM</label>
+                                      <select name="gm" class="form-control">
+                                        <option value="1" {{ $model->gm == '1' ? 'selected="selected"':null }}>Active</option>
+                                        <option value="0" {{ $model->gm == '0' ? 'selected="selected"':null }}>Non Active</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-group">
                                       <label class="control-label">User Privilege</label>
                                       <select name="privilege" class="form-control">
                                         <option value="1" {{ $model->privilege == '1' ? 'selected="selected"':null }}>Active</option>
