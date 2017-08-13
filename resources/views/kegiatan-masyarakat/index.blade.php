@@ -65,7 +65,10 @@
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>{{ $model->tahun }}</td>
                                 <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
-                                <td><button id="{{ $model->id }}" type="button" class="btn btn-success btn-anggaran" data-toggle="modal" data-target="#modalAnggaran">Edit Anggaran</button></td>
+                                <td>
+                                  <button id="{{ $model->id }}" type="button" class="btn btn-success btn-anggaran btn-block" data-toggle="modal" data-target="#modalAnggaran">Edit Anggaran</button>
+                                  <a href="{{ url('kegiatan-masyarakat/laporan/'.$model->id) }}" type="button" class="btn btn-primary btn-block">Ajukan Laporan</a>
+                                </td>
                                 <td>
                                     <a href="{{ url('kegiatan-masyarakat/'.$model->id) }}" class="btn btn-info btn-icon icon-lg fa fa-eye"></a>
                                     <a href="{{ url('kegiatan-masyarakat/'.$model->id.'/edit') }}" class="btn btn-warning btn-icon icon-lg fa fa-pencil-square"></a>

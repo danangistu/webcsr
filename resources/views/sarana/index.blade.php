@@ -62,7 +62,7 @@
                         @foreach($models as $model)
                             <tr class="{{ $model->kode == '' ? 'danger':null }}">
                                 <td>{{ $model->tempat }}</td>
-                                <td>{{ $model->kerjasama }}</td>
+                                <td>{{ substr($model->kerjasama,0,50) }} ...</td>
                                 <td>{{ $model->tahun }}</td>
                                 <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
                                 <td>

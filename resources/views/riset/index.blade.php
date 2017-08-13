@@ -67,7 +67,10 @@
                                 <td>{{ $model->kerjasama }}</td>
                                 <td>{{ $model->tahun }}</td>
                                 <td class="text-right">{{ 'Rp. '.number_format($model->anggaran,2,',','.') }}</td>
-                                <td><button id="{{ $model->id }}" type="button" class="btn btn-success btn-anggaran" data-toggle="modal" data-target="#risetAnggaran">Edit Anggaran</button></td>
+                                <td>
+                                  <button id="{{ $model->id }}" type="button" class="btn btn-success btn-anggaran btn-block" data-toggle="modal" data-target="#risetAnggaran">Edit Anggaran</button>
+                                  <a href="{{ url('riset/laporan/'.$model->id) }}" type="button" class="btn btn-primary btn-block">Ajukan Laporan</a>
+                                </td>
                                 <td>
                                     <a href="{{ url('riset/roadmap/'.$model->id) }}" class="btn {{ $count_roadmap > 0 ? 'btn-success':'btn-primary' }}"> {{ $count_roadmap }} Data Roadmap</a>
                                 </td>

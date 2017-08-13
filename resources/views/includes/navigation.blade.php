@@ -177,6 +177,23 @@
                             </ul>
                         </li>
                         @endif
+                        <li class="{{
+                            request()->segment(1) == ('laporan-setting') ||
+                            request()->segment(1) == ('pengajuan-laporan')
+                            ? 'active-link' : null
+                        }}">
+                            <a href="">
+                                <i class="fa fa-clipboard"></i>
+                                <span class="menu-title">
+                                    <strong>Pengajuan Laporan</strong>
+                                </span>
+                            </a>
+                            <!--Submenu-->
+                            <ul class="collapse">
+                                <li class="{{ request()->segment(1) == ('laporan-setting') ? 'active-link' : null }}"><a href="{{ url('laporan-setting') }}">Laporan Setting</a></li>
+                                <li class="{{ request()->segment(1) == ('pengajuan-laporan') ? 'active-link' : null }}"><a href="{{ url('pengajuan-laporan') }}">Pengajuan Laporan</a></li>
+                            </ul>
+                        </li>
                         @if($role->privilege == 1)
                         <li class="{{
                             request()->segment(1) == ('privilege') ||

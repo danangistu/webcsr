@@ -24,6 +24,7 @@ Route::get('sarana/delete/{id}', 'SaranaController@destroy');
 Route::post('sarana/anggaran', 'SaranaController@anggaran');
 Route::get('sarana/get-anggaran/{id}', 'SaranaController@getAnggaran');
 Route::get('sarana/laporan/{id}', 'SaranaController@getLaporan');
+Route::post('sarana/laporan/{id}', 'SaranaController@postLaporan');
 //Pelayanan Kesehatan
 Route::resource('kesehatan', 'KesehatanController');
 Route::get('kesehatan/delete/{id}', 'KesehatanController@destroy');
@@ -117,6 +118,12 @@ Route::get('kode-pendanaan/delete/{id}', 'KodeController@destroy');
 Route::get('cek-kode/{kode}', 'KodeController@cekCode');
 //Laporan
 Route::get('laporan-pendanaan', 'LaporanController@index');
+
+//SettingLaporan
+Route::get('laporan-setting', 'LaporanSettingController@index');
+Route::post('laporan-setting', 'LaporanSettingController@store');
+Route::get('pengajuan-laporan', 'PengajuanLaporanController@index');
+
 
 //Setting
 Route::get('setting', 'SettingController@index');
